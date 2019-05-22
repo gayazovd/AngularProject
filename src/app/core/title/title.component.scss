@@ -1,0 +1,10 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+    box-shadow: $default-box-shadow;
+    height: 70px;
+}

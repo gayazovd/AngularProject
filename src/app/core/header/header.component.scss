@@ -1,0 +1,22 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+.wrapper {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: $primary-color;
+    color: $secondary-color-text;
+    box-shadow: $default-box-shadow;
+}
+.courses-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    @include element('logo-image') {
+        width: 40px;
+        height: 40px;
+        padding-right: 10px;
+    }
+}
