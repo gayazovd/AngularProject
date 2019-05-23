@@ -1,5 +1,10 @@
 @mixin element($element) {
-  &__#{$element} {
-    @content;
-  }
+    &__#{$element} {
+        @content;
+    }
+}
+@mixin after() {
+    &::after {
+        @content;
+    }
 }

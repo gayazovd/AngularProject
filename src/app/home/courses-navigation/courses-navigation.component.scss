@@ -7,16 +7,44 @@
     padding: 0 40px;
     width: 70%;
     height: 60px;
+    padding-top: 20px;
 }
 .courses-navigation {
+    @include element('searching-bar') {
+        position: relative;
+
+        @include after() {
+            content: '';
+            position: absolute;
+            top: 14px;
+            width: 30px;
+            height: 25px;
+            right: 10px;
+            background: url(../../../assets/search-icon/search.png);
+            background-position: 10px 0px;
+            background-repeat: no-repeat;
+            background-size: 20px;
+        }
+    }
     @include element('label') {
+        @extend %default-font-size;
         padding-right: 30px;
     }
     @include element('search-input') {
-        height: 30px;
+        height: $navigation-height;
+        width: 400px;
         border-radius: 8px;
         padding-left: 15px;
-        border: 2px solid rgba(124, 116, 116, 0.15);
+        padding-right: 30px;
+        border: $default-border-components;
+        box-shadow: $courses-component-box-shadow;
+    }
+    @include element('button') {
+        @extend %default-font-size;
+        border-radius: 20px;
+        width: 150px;
+        height: $navigation-height + 6;
+        border: $default-border-components;
         box-shadow: $courses-component-box-shadow;
     }
 }
