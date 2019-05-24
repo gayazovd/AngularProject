@@ -1,2 +1,74 @@
 @import '../../../../common/mixins.scss';
 @import '../../../../common/common.style.scss';
+.wrapper {
+    width: 70%;
+    padding: 0 40px 20px;
+}
+.courses {
+    height: 600px;
+    border: $default-border-components;
+    border-radius: 15px;
+    box-shadow: $courses-component-box-shadow;
+}
+.courses-list {
+    border-bottom: $default-border-components;
+    @include element('header') {
+        @extend %default-font-size;
+        display: flex;
+        padding: 20px 40px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @include element('title') {
+        display: flex;
+        justify-content: space-between;
+        width: 70px;
+    }
+    @include element('icon') {
+        height: 10px;
+        width: 10px;
+        border-left: 2px solid rgb(8, 8, 8);
+        border-bottom: 2px solid rgb(8, 8, 8);
+        transform: rotate(-45deg);
+    }
+    @include element('item') {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+    }
+    @include element('button') {
+        border: $default-border-components;
+        padding: 10px;
+        border-radius: 8px;
+        font: {
+            size: 15px;
+        }
+    }
+    @include element('quantity') {
+        display: flex;
+        align-items: center;
+    }
+    @include element('information-titles') {
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+#title {
+    flex-grow: 2;
+}
+#video {
+    flex-grow: 2.5;
+}
+#students {
+    flex-grow: 1.5;
+}
+#start-date {
+    flex-grow: 1.5;
+}
+#duration {
+    flex-grow: 1.5;
+}
+#action {
+    flex-grow: 0.5;
+}

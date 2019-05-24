@@ -1,15 +1,27 @@
 <div class="wrapper">
-    <div class="courses-list">
-        <div class="coyrses-list__header">
-            <div class="courses-list__title">
-                <div class="courses-list__icon"></div>
-                <span class="courses-list__text">Title</span>
+    <div class="courses">
+        <div class="courses-list">
+            <div class="courses-list__header">
+                <div class="courses-list__title">
+                    <div class="courses-list__icon"></div>
+                    <span class="courses-list__text">Title</span>
+                </div>
+                <div class="courses-list__item">
+                    <span class="courses-list__quantity">Items: 3</span>
+                    <button type="button" class="courses-list__button">Add item</button>
+                </div>
             </div>
-            <div class="courses-list__item">
-                <span class="courses-list__quantity">Items: 3</span>
-                <button type="button" class="courses-list__button">Add item</button>
+            <div class="courses-list__information-titles">
+                <span id="title">Title</span>
+                <span id="video">Video</span>
+                <span id="students">Students</span>
+                <span id="start-date">Start-date</span>
+                <span id="duration">Duration</span>
+                <span id="action">Actions</span>
             </div>
         </div>
+        <div>
+            <app-courses-list-item></app-courses-list-item>
+        </div>
     </div>
-    <div></div>
 </div>
