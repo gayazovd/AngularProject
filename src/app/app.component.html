@@ -5,9 +5,9 @@
     <div class="courses-content">
         <div class="courses-content__main">
             <app-courses-navigation></app-courses-navigation>
-            <app-courses-list *ngFor="let item of coursesItems"></app-courses-list>
+            <app-courses-list *ngFor="let item of coursesItems;" [listItem]=" item.listItem">
+            </app-courses-list>
         </div>
-
         <div class="courses-content__history-bar"></div>
     </div>
 </div>

@@ -53,8 +53,14 @@
         display: flex;
         justify-content: space-between;
     }
+    @include element('information-items') {
+        width: 100px;
+    }
 }
-#title {
+#video {
+    width: 150px;
+}
+/* #title {
     flex-grow: 2;
 }
 #video {
@@ -72,3 +78,4 @@
 #action {
     flex-grow: 0.5;
 }
+ */

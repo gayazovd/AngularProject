@@ -1,0 +1,41 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+
+.courses-list-item{
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    @include element(edit){
+        width: 30px;
+    }
+    @include element(delete){
+        width: 30px;
+    }
+    @include element(video){
+        width: 100px;
+    }
+    @include element(icon-wrapper){
+        display: flex;
+        justify-content: space-between;
+    }
+}
+#video {
+    width: 150px;
+}
+#title {
+    width: 100px;
+}
+#students {
+    width: 100px;
+}
+#start-date {
+    width: 100px;
+}
+#duration {
+    width: 100px;
+}
+#action {
+    width: 100px;
+}

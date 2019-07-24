@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AppCourses } from '../../app.model';
 
 @Component({
     selector: 'app-courses-list',
@@ -6,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-    constructor() {}
+    constructor() {
 
-    ngOnInit() {}
+    }
+    @Input() listItem: AppCourses;
+
+    ngOnInit() { console.log(this.listItem) }
+
+    addLesson(e) {
+        console.log(e)
+        console.log('Добавить урок!')
+    }
+
+    delete(id: number) {
+        console.log(id);
+    }
 }

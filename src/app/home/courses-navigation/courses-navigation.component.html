@@ -1,13 +1,9 @@
 <div class="wrapper">
     <form class="courses-navigation__searching-bar">
         <label class="courses-navigation__label" for="search">Courses</label>
-        <input
-            type="text"
-            id="search"
-            placeholder="Search course"
-            class="courses-navigation__search-input"
-        />
+        <input (keydown)="searchCourse($event)" [(ngModel)]="searchValue" name="searchValue" type="text" id="search"
+            placeholder="Search course" class="courses-navigation__search-input" />
         <div class="courses-navigation__search-icon"></div>
     </form>
-    <button type="button" class="courses-navigation__button">Add course</button>
+    <button type="button" class="courses-navigation__button" (click)="addCourse()">Add course</button>
 </div>
