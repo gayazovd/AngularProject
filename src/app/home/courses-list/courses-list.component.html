@@ -1,27 +1,32 @@
-<div class="wrapper">
-    <div class="courses">
-        <div class="courses-list">
-            <div class="courses-list__header">
-                <div class="courses-list__title">
-                    <div class="courses-list__icon"></div>
-                    <span class="courses-list__text">Title</span>
+
+    <div class="wrapper">
+        <div class="courses">
+            <div class="courses-list">
+                <div class="courses-list__header">
+                    <div class="courses-list__title">
+                        <div class="courses-list__icon"></div>
+                        <span class="courses-list__text">Title</span>
+                    </div>
+                    <div class="courses-list__item">
+                        <span class="courses-list__quantity">Items: {{listItem.length}}</span>
+                        <button type="button" class="courses-list__button" (click)="addLesson($event)">Add item</button>
+                    </div>
                 </div>
-                <div class="courses-list__item">
-                    <span class="courses-list__quantity">Items: {{listItem.length}}</span>
-                    <button type="button" class="courses-list__button" (click)="addLesson($event)">Add item</button>
+                <div class="courses-list__information-titles">
+                    <div class='courses-list__information-items' id="title">Title</div>
+                    <div class='courses-list__information-items' id="video">Video</div>
+                    <div class='courses-list__information-items' id="students">Students</div>
+                    <div class='courses-list__information-items' id="start-date">Start-date</div>
+                    <div class='courses-list__information-items' id="duration">Duration</div>
+                    <div class='courses-list__information-items' id="action">Actions</div>
                 </div>
             </div>
-            <div class="courses-list__information-titles">
-                <div class='courses-list__information-items' id="title">Title</div>
-                <div class='courses-list__information-items' id="video">Video</div>
-                <div class='courses-list__information-items' id="students">Students</div>
-                <div class='courses-list__information-items' id="start-date">Start-date</div>
-                <div class='courses-list__information-items' id="duration">Duration</div>
-                <div class='courses-list__information-items' id="action">Actions</div>
-            </div>
+            <ul>
+
+                <app-courses-list-item (delete)="delete($event)" *ngFor="let item of listItem" [course]=item>
+                </app-courses-list-item>
+
+            </ul>
         </div>
-        <ul>
-            <app-courses-list-item (delete)="delete($event)" *ngFor="let item of listItem" [course]=item></app-courses-list-item>
-        </ul>
     </div>
-</div>
+

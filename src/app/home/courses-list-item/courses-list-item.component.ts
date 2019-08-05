@@ -8,10 +8,10 @@ import { ListItem } from '../../app.model';
 })
 export class CoursesListItemComponent implements OnInit {
 
-
-  constructor() { }
   @Output() delete = new EventEmitter<number>()
   @Input() course: ListItem
+  constructor() {
+  }
 
   ngOnInit() {
   }
@@ -22,6 +22,10 @@ export class CoursesListItemComponent implements OnInit {
 
   edit() {
     console.log("изменить урок")
+  }
+
+  addFavorites() {
+    this.course.star = !this.course.star;
   }
 
 }

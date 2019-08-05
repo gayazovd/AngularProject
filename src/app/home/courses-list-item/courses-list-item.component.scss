@@ -7,6 +7,9 @@
     justify-content: space-between;
     list-style-type: none;
     align-items: center;
+    margin-top: 3px;
+    border-radius: 10px;
+    position: relative;
     @include element(edit){
         width: 30px;
     }
@@ -39,3 +42,17 @@
 #action {
     width: 100px;
 }
+.fav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #F0F0F0;
+    text-shadow: 0 0 1px #666666;
+    font-size: 30px;
+    cursor: pointer;
+    user-select:none;
+}
+.selected {
+    color: #F4B30A;
+    text-shadow: 0 0 1px #F48F0A;
+  }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-courses-navigation',
@@ -6,16 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses-navigation.component.scss']
 })
 export class CoursesNavigationComponent implements OnInit {
-  searchValue: string = "";
   constructor() { }
+  @Output() searchingCourse = new EventEmitter<string>();
+  public searchValue: string;
 
   ngOnInit() {
   }
-  searchCourse(e) {
+
+  searchCourses(e) {
     if (e.keyCode === 13) {
-      console.log(this.searchValue);
+      console.log(this.searchValue)
+      this.searchingCourse.emit(this.searchValue);
     }
   }
+
   addCourse() {
     console.log("Добавить курс!");
   }

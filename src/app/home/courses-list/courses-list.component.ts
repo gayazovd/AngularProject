@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AppCourses } from '../../app.model';
 
 @Component({
@@ -10,7 +10,7 @@ export class CoursesListComponent implements OnInit {
     constructor() {
 
     }
-    @Input() listItem: AppCourses;
+    @Input() public listItem: AppCourses;
 
     ngOnInit() { console.log(this.listItem) }
 

@@ -1,9 +1,10 @@
-<li class="courses-list-item">
-    <div class="courses-list-item__info" id="title" class="courses-list-item__title">{{course.title}}</div>
+<li class="courses-list-item" [appChangeBorderColor]='course'>
+    <div (click)="addFavorites()" class='fav' [class.selected]="course.star">★</div>
+    <div class="courses-list-item__info" id="title" class="courses-list-item__title">{{course.title | uppercase}}</div>
     <video id="video" class="courses-list-item__video" src=""></video>
     <div id="students" class="courses-list-item__students">{{course.students}}</div>
-    <div id="start-date" class="courses-list-item__data">{{course.startDate}}</div>
-    <div id="duration" class="courses-list-item__duration">{{course.duration}}</div>
+    <div id="start-date" class="courses-list-item__data">{{course.startDate | datePipe}}</div>
+    <div id="duration" class="courses-list-item__duration">{{course.duration | durationPipe}}</div>
     <div id="action" class="courses-list-item__icon-wrapper">
         <img (click)="edit()" class="courses-list-item__edit" src="../../../assets/edit-delete-icons/edit.png"
             alt="del">

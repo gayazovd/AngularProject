@@ -1,5 +1,6 @@
 export interface Course {
-    listItem: AppCourses;
+    listItem: ListItem[];
+    length?: number;
 }
 export interface AppCourses {
     length?: number;
@@ -10,6 +11,7 @@ export interface ListItem {
     title: string;
     video: string;
     students: number;
-    startDate: string;
-    duration: string;
+    startDate: Date;
+    duration: number;
+    star: boolean;
 }
