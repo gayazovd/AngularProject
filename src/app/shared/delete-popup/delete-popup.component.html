@@ -1,0 +1,11 @@
+<div class="wrapper" *ngIf='isShow'>
+  <div class="popup">
+    <div class="popup__content">
+      <h1 class="popup__title">Вы действительно хотите удалить {{course.title}}?</h1>
+      <div class="popup__controllers">
+        <button class="popup__delete" (click)="remove()">Ok</button>
+        <button class="popup__cancel" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

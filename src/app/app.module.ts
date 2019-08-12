@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,7 +12,7 @@ const appRoutes: Routes = [{ path: 'courses-page', component: AppComponent }, { 
 
 @NgModule({
     declarations: [AppComponent, FilterPipe],
-    imports: [BrowserModule, CoreModule, HomeModule, FormsModule,
+    imports: [BrowserModule, SharedModule, HomeModule, FormsModule,
         RouterModule.forRoot(
             appRoutes
         )],

@@ -16,7 +16,6 @@ export class CoursesNavigationComponent implements OnInit {
 
   searchCourses(e) {
     if (e.keyCode === 13) {
-      console.log(this.searchValue)
       this.searchingCourse.emit(this.searchValue);
     }
   }

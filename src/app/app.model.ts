@@ -6,6 +6,12 @@ export interface AppCourses {
     length?: number;
     [index: number]: ListItem;
 }
+
+export interface DeletePopup {
+    id: number;
+    title: string;
+}
+
 export interface ListItem {
     id: number;
     title: string;

@@ -8,7 +8,7 @@ import { ListItem } from '../../app.model';
 })
 export class CoursesListItemComponent implements OnInit {
 
-  @Output() delete = new EventEmitter<number>()
+  @Output() delete = new EventEmitter<ListItem>()
   @Input() course: ListItem
   constructor() {
   }
@@ -16,8 +16,8 @@ export class CoursesListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteLesson(id: number) {
-    this.delete.emit(id);
+  deleteLesson(course: ListItem) {
+    this.delete.emit(course);
   }
 
   edit() {
