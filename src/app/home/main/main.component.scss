@@ -1,0 +1,22 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+
+.courses-content{
+    @include element(no-data-wrapper){
+        padding: 20px;
+    }
+    @include element(no-data){
+        height: $navigation-height;
+        width: 70%;
+        border-radius: 8px;
+        padding-left: 15px;
+        padding-right: 30px;
+        border: $default-border-components;
+        box-shadow: $courses-component-box-shadow;
+        background-color: rgba(124, 116, 116, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(124, 116, 116, 0.767);
+    }
+}
