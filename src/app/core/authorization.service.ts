@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../app.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,14 @@ export class AuthorizationService {
 
   public userData: User;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   login(data: User) {
-    this.userData = data;
-    localStorage.setItem("token", JSON.stringify(this.userData.token))
+    if (data.login === "Login" && data.password === '12345') {
+      this.userData = data;
+      localStorage.setItem("token", JSON.stringify(this.userData.token));
+      this.route.navigate(["courses-page"]);
+    }
   }
 
   logout() {
@@ -24,7 +28,7 @@ export class AuthorizationService {
   }
 
   isAuthenticated(): boolean {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('token')) {
       return true;
     }
     return false;
