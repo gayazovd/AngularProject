@@ -1,0 +1,15 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+
+.notfound{
+    @include element(wrapper){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    @include element(img){
+        width: 100%;
+        height: 85vh;
+    }
+}

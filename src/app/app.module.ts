@@ -8,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 
 
 @NgModule({
-    declarations: [AppComponent, FilterPipe],
+    declarations: [AppComponent, FilterPipe, AddCourseComponent],
     imports: [BrowserModule, SharedModule, HomeModule, FormsModule, LoginModule,
         RoutingModule],
     providers: [],

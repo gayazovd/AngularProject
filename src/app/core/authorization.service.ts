@@ -30,7 +30,9 @@ export class AuthorizationService {
   isAuthenticated(): boolean {
     if (localStorage.getItem('token')) {
       return true;
+    } else {
+      this.route.navigate(['login']);
+      return false;
     }
-    return false;
   }
 }

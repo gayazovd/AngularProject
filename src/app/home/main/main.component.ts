@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { Course } from 'src/app/app.model';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -15,9 +16,11 @@ export class MainComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.courses = this.coursesService.getList();
   }
-  
-  ngDoCheck(){
+
+  ngDoCheck() {
     this.courses = this.coursesService.getList();
   }
+
+
 
 }

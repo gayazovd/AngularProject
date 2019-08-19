@@ -1,17 +1,17 @@
 <div class="courses-content">
   <div class="courses-content__main">
-      <app-courses-navigation (searchingCourse)="searchCourse($event)">
-      </app-courses-navigation>
-      <ng-template [ngIf]="courses" [ngIfElse]="noData">
-          <app-courses-list *ngFor="let item of courses;" [listItem]="item.listItem">
-          </app-courses-list>
-      </ng-template>
+    <app-courses-navigation>
+    </app-courses-navigation>
+    <ng-template [ngIf]="courses" [ngIfElse]="noData">
+      <app-courses-list *ngFor="let item of courses;" [listItem]="item.listItem">
+      </app-courses-list>
+    </ng-template>
   </div>
   <div class="courses-content__history-bar"></div>
 </div>
 <ng-template #noData>
   <div class="courses-content__no-data-wrapper">
-      <div class="courses-content__no-data">No Data, feel free to add new Course</div>
+    <div class="courses-content__no-data">No Data, feel free to add new Course</div>
   </div>
 </ng-template>
 <app-delete-popup></app-delete-popup>

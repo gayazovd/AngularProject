@@ -9,11 +9,12 @@ import { DurationPipePipe } from './courses-list-item/duration-pipe.pipe';
 import { DatePipePipe } from './courses-list-item/date-pipe.pipe';
 import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
     declarations: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, ChangeBorderColorDirective, DurationPipePipe, DatePipePipe, MainComponent],
-    imports: [CommonModule, FormsModule, SharedModule],
+    imports: [CommonModule, FormsModule, SharedModule, RouterModule],
     exports: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, MainComponent]
 })
 export class HomeModule { }

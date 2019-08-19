@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { AppCourses, ListItem } from '../../app.model';
 import { PopupService } from 'src/app/core/popup.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-courses-list',
@@ -8,7 +9,7 @@ import { PopupService } from 'src/app/core/popup.service';
     styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-    constructor(private popup: PopupService) {
+    constructor(private popup: PopupService, private route: Router) {
 
     }
     @Input() public listItem: AppCourses;
@@ -16,8 +17,7 @@ export class CoursesListComponent implements OnInit {
     ngOnInit() { console.log(this.listItem) }
 
     addLesson(e) {
-        console.log(e)
-        console.log('Добавить урок!')
+        this.route.navigate(['courses-page/new'])
     }
 
     delete(course: ListItem) {
