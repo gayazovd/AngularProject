@@ -1,0 +1,44 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+
+.new-course{
+   
+    @include element(wrapper){
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+    }
+    @include element(data-for-new-course){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    @include element(text){
+        width: 200px;
+        box-sizing: border-box;
+        height: $navigation-height;
+        border-radius: 8px;
+        padding-left: 15px;
+        padding-right: 30px;
+        border: $default-border-components;
+        box-shadow: $courses-component-box-shadow;
+    }
+    @include element(label){
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
+        padding: 5px;
+    }
+    @include element(controllers){
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-top: 10px;
+        height: 40px;
+    }
+    @include element(button){
+        @extend %default-button;
+        width: 100px;
+        box-shadow: $courses-component-box-shadow;
+    }
+}
