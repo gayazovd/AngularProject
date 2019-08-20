@@ -9,13 +9,14 @@ import { FilterPipe } from './filter.pipe';
 import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
     declarations: [AppComponent, FilterPipe, AddCourseComponent],
     imports: [BrowserModule, SharedModule, HomeModule, FormsModule, LoginModule,
-        RoutingModule],
+        RoutingModule, RouterModule],
     providers: [],
     bootstrap: [AppComponent]
 })

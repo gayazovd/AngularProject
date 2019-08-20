@@ -5,15 +5,16 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CoursesListItemComponent } from './courses-list-item/courses-list-item.component';
 import { FormsModule } from '@angular/forms';
 import { ChangeBorderColorDirective } from './courses-list-item/change-border-color.directive';
-import { DurationPipePipe } from './courses-list-item/duration-pipe.pipe';
-import { DatePipePipe } from './courses-list-item/date-pipe.pipe';
+import { DurationPipePipe } from '../shared/duration-pipe.pipe';
+import { DatePipePipe } from '../shared/date-pipe.pipe';
 import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { AppModule } from '../app.module';
 
 
 @NgModule({
-    declarations: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, ChangeBorderColorDirective, DurationPipePipe, DatePipePipe, MainComponent],
+    declarations: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, ChangeBorderColorDirective, MainComponent],
     imports: [CommonModule, FormsModule, SharedModule, RouterModule],
     exports: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, MainComponent]
 })

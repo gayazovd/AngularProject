@@ -7,7 +7,7 @@ import * as moment from 'moment';
 export class DatePipePipe implements PipeTransform {
 
   transform(startDate: Date): string {
-    const format = 'DD.MM.YYYY';
+    const format = 'MM-DD-YYYY';
     return moment(startDate).format(format);
   }
 

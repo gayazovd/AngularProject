@@ -20,6 +20,7 @@ export interface ListItem {
     startDate: Date;
     duration: number;
     star: boolean;
+    description: string;
 }
 
 export interface User {

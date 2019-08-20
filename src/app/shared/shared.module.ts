@@ -6,10 +6,12 @@ import { TitleComponent } from './title/title.component';
 import { DeletePopupComponent } from './delete-popup/delete-popup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { DatePipePipe } from './date-pipe.pipe';
+import { DurationPipePipe } from './duration-pipe.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent],
+  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent]
+  exports: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe]
 })
 export class SharedModule { }
