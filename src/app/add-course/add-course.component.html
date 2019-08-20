@@ -1,29 +1,33 @@
-<div></div>
+<div>
+  <a routerLink='/courses-page'>Courses/</a>
+  <span *ngIf="listItem">{{listItem.title}}</span>
+</div>
 <div class="new-course">
   <div class="new-course__wrapper" *ngIf="courseId else dataOfCourse">
     <div class="new-course__data-for-new-course">
       <label class="new-course__label" for="">Title*
-        <input class="new-course__text" value="{{listItem.title}}" type="text">
+        <input class="new-course__text" [(ngModel)]="listItem.title" type="text">
       </label>
       <label class="new-course__label" for="">Description*
-        <textarea rows="9" cols="40" value="{{listItem.description}}" class="new-course__text"></textarea>
+        <textarea rows="9" cols="40" [(ngModel)]="listItem.description" class="new-course__text"></textarea>
       </label>
       <label class="new-course__label" for="">Date*
-        <input class="new-course__text" value="{{listItem.startDate | datePipe}}" type="date">
+        <input class="new-course__text" [ngModel]="listItem.startDate | datePipe"
+          (ngModelChange)="listItem.startDate=$event" type="date">
       </label>
       <label class="new-course__label" for="">Duration*
-        <input class="new-course__text" value="{{listItem.duration}}" type="text">
+        <input class="new-course__text" [(ngModel)]="listItem.duration" type="text">
       </label>
       <label class="new-course__label" for="">Students*
-        <input class="new-course__text" value="{{listItem.students}}" type="text">
+        <input class="new-course__text" [(ngModel)]="listItem.students" type="text">
       </label>
       <label class="new-course__label" for="">Video*
-        <input class="new-course__text" value="{{listItem.video}}" type="text">
+        <input class="new-course__text" [(ngModel)]="listItem.video" type="text">
       </label>
     </div>
     <div class="new-course__controllers">
-      <button class="new-course__button">Save</button>
-      <button class="new-course__button">Cancel</button>
+      <button (click)="save()" class="new-course__button">Save</button>
+      <button (click)="cancel()" class="new-course__button">Cancel</button>
     </div>
   </div>
 
@@ -50,8 +54,8 @@
         </label>
       </div>
       <div class="new-course__controllers">
-        <button class="new-course__button">Save</button>
-        <button class="new-course__button">Cancel</button>
+        <button (click)="save()" class="new-course__button">Save</button>
+        <button (click)="cancel()" class="new-course__button">Cancel</button>
       </div>
     </div>
   </ng-template>

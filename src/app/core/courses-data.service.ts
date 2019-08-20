@@ -38,7 +38,16 @@ export class CoursesDataService {
   }
 
   udateItem(dataOfUpdateCourse: ListItem) {
-    console.log(dataOfUpdateCourse);
+    let index: number;
+    this.coursesItems.forEach(course => {
+      if (index >= 0) return;
+      index = course.listItem.findIndex(listItem => listItem.id === dataOfUpdateCourse.id)
+    });
+    this.coursesItems.forEach((course) => {
+      if (course.listItem.some(listitem => listitem.id === dataOfUpdateCourse.id)) {
+        course.listItem.splice(index, 1, dataOfUpdateCourse)
+      }
+    });
   }
 
   removeItem(dataOfCourse: ListItem) {

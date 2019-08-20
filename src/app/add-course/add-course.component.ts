@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesDataService } from '../core/courses-data.service';
 import { ListItem } from '../app.model';
 
@@ -12,7 +12,7 @@ export class AddCourseComponent implements OnInit {
   public courseId: number;
   public listItem: ListItem;
 
-  constructor(private route: ActivatedRoute, private courseService: CoursesDataService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CoursesDataService) { }
 
   ngOnInit() {
     this.getParams();
@@ -26,7 +26,16 @@ export class AddCourseComponent implements OnInit {
   getParams() {
     this.route.params.subscribe(params => {
       return params.coursesId !== 'new' ? this.courseId = +params.coursesId : null;
-    })
+    });
+  }
+
+  save() {
+    this.courseService.udateItem(this.listItem);
+    this.router.navigate(['/courses-page']);
+  }
+
+  cancel() {
+    this.router.navigate(['/courses-page']);
   }
 
 }
