@@ -10,13 +10,12 @@ import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { RouterModule } from '@angular/router';
-import { EditComponent } from './add-course/edit/edit.component';
-import { CreateComponent } from './add-course/create/create.component';
+
 
 
 
 @NgModule({
-    declarations: [AppComponent, FilterPipe, AddCourseComponent, EditComponent, CreateComponent],
+    declarations: [AppComponent, FilterPipe, AddCourseComponent],
     imports: [BrowserModule, SharedModule, HomeModule, FormsModule, LoginModule,
         RoutingModule, RouterModule],
     providers: [],

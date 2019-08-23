@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { AppCourses, ListItem } from '../../app.model';
 import { PopupService } from 'src/app/core/popup.service';
 import { Router } from '@angular/router';
@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-courses-list',
     templateUrl: './courses-list.component.html',
-    styleUrls: ['./courses-list.component.scss']
+    styleUrls: ['./courses-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesListComponent implements OnInit {
     constructor(private popup: PopupService, private route: Router) {

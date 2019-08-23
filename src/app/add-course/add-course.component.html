@@ -3,6 +3,11 @@
   <span *ngIf="listItem">{{listItem.title}}</span>
 </div>
 <div class="new-course">
-  <app-edit *ngIf="courseId" [listItem]="listItem"></app-edit>
-  <app-create *ngIf="!courseId"></app-create>
+  <div class="new-course__wrapper">
+    <app-course-form [listItem]="listItem"></app-course-form>
+    <div class="new-course__controllers">
+      <button (click)="save()" class="new-course__button">Save</button>
+      <button (click)="cancel()" class="new-course__button">Cancel</button>
+    </div>
+  </div>
 </div>
