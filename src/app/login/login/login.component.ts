@@ -17,8 +17,14 @@ export class LoginComponent implements OnInit {
   }
 
   authorization() {
-    const user = { login: this.login, password: this.password, token: Date.now().toString() };
+    const user = { login: this.login, password: this.password };
     this.auth.login(user);
+    this.clear();
+  }
+
+  clear() {
+    this.login = '';
+    this.password = '';
   }
 
 }

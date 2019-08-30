@@ -16,7 +16,7 @@ export class ChangeBorderColorDirective implements OnInit {
   }
 
   ngOnInit() {
-    const color = this.transformDate(this.course.startDate);
+    const color = this.transformDate(this.course.date);
     if (color) {
       const border = `2px solid ${color}`;
       this.renderer.setStyle(this.el.nativeElement, 'border', border);

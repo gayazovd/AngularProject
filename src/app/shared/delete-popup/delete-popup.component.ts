@@ -25,7 +25,7 @@ export class DeletePopupComponent implements DoCheck {
   }
 
   remove() {
-    this.coursesService.removeItem(this.course);
+    // this.coursesService.removeItem(this.course);
     this.popup.hide();
   }
 

@@ -10,14 +10,14 @@ import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
     declarations: [AppComponent, FilterPipe, AddCourseComponent],
     imports: [BrowserModule, SharedModule, HomeModule, FormsModule, LoginModule,
-        RoutingModule, RouterModule],
+        RoutingModule, RouterModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent]
 })

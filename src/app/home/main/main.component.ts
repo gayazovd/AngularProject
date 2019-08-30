@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, DoCheck, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, DoCheck, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Course } from 'src/app/app.model';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
 import { Router } from '@angular/router';
@@ -9,19 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnInit, DoCheck {
-  public courses: Course[];
+export class MainComponent implements OnInit {
+  public courses: Course[] = [];
 
-  constructor(private coursesService: CoursesDataService) { }
+  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.courses = this.coursesService.getList();
+    this.coursesService.getList().subscribe(data => {
+      this.courses = data;
+      this.cd.detectChanges();
+    })
   }
-
-  ngDoCheck() {
-    this.courses = this.coursesService.getList();
-  }
-
 
 
 }

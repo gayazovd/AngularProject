@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { AuthorizationService } from 'src/app/core/authorization.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public login: string
 
-  constructor() { }
+  constructor(private auth: AuthorizationService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
+    if (this.auth.isAuthenticated()) {
+      this.login = this.auth.getUserInfo();
+    }
+  }
+
+  logOut() {
+
   }
 
 }

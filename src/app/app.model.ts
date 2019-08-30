@@ -14,17 +14,21 @@ export interface DeletePopup {
 
 export interface ListItem {
     id: number;
-    title: string;
-    video: string;
-    students: number;
-    startDate: Date;
-    duration: number;
-    star: boolean;
+    name: string;
+    authors: Author[];
+    date: Date;
+    length: number;
+    isTopRated: boolean;
     description: string;
 }
 
 export interface User {
     login: string;
     password: string;
-    token: string;
+}
+
+export interface Author {
+    id: number,
+    firstName: string,
+    lastName: string
 }

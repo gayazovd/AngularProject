@@ -26,7 +26,7 @@ export class CoursesListItemComponent implements OnInit {
   }
 
   addFavorites() {
-    this.course.star = !this.course.star;
+    this.course.isTopRated = !this.course.isTopRated;
   }
 
 }

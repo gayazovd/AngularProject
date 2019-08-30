@@ -20,7 +20,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   getCourse() {
-    this.listItem = this.courseService.getItemById(this.courseId);
+    // this.listItem = this.courseService.getItemById(this.courseId);
   }
 
   getParams() {
@@ -30,7 +30,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   save() {
-    this.courseService.udateItem(this.listItem);
+    // this.courseService.udateItem(this.listItem);
     this.router.navigate(['/courses-page']);
   }
 

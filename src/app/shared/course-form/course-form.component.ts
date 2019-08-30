@@ -13,7 +13,7 @@ export class CourseFormComponent implements OnInit {
 
   ngOnInit() {
     if (!this.listItem) {
-      this.listItem = { id: null, title: '', description: null, video: null, duration: null, star: null, startDate: null, students: null }
+      /* this.listItem = { id: null, title: '', description: null, video: null, duration: null, isTopRated: null, date: null, students: null } */
     }
   }
 

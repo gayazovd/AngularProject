@@ -10,10 +10,11 @@ import { DatePipePipe } from './date-pipe.pipe';
 import { DurationPipePipe } from './duration-pipe.pipe';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { FormsModule } from '@angular/forms';
+import { AuthorsPipePipe } from './authors-pipe.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent],
+  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe],
   imports: [CommonModule, RouterModule, FormsModule],
-  exports: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent]
+  exports: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe]
 })
 export class SharedModule { }
