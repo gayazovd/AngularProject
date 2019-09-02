@@ -5,6 +5,7 @@
     <ng-template [ngIf]="courses" [ngIfElse]="noData">
       <app-courses-list *ngFor="let item of courses;" [listItem]="item.listItem">
       </app-courses-list>
+      <button *ngIf="isShow" (click)="loadData()" class="button">Load More</button>
     </ng-template>
   </div>
   <div class="courses-content__history-bar"></div>

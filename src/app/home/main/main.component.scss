@@ -2,6 +2,7 @@
 @import '../../../../common/common.style.scss';
 
 .courses-content{
+    position: relative;
     @include element(no-data-wrapper){
         padding: 20px;
     }
@@ -19,4 +20,14 @@
         align-items: center;
         color: rgba(124, 116, 116, 0.767);
     }
+    @include element(main){
+
+    }
+}
+.button{
+    @extend %default-button;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
 }

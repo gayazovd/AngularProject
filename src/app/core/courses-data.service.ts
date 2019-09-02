@@ -1,5 +1,5 @@
 import { Injectable, ɵConsole } from '@angular/core';
-import { Course, ListItem } from '../app.model';
+import { Course, ListItem, Pagination } from '../app.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators'
@@ -13,8 +13,8 @@ export class CoursesDataService {
 
   constructor(private http: HttpService) { }
 
-  getList(): Observable<Course[]> {
-    return this.http.getDataFromServer();
+  getList(count: number, pageSize: number): Observable<Pagination<Course>> {
+    return this.http.paging(count, pageSize);
   }
 
 
