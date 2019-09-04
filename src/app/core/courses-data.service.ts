@@ -18,6 +18,11 @@ export class CoursesDataService {
   }
 
 
+  searchByCourses(textFragment: string) {
+    return this.http.postForSearching(textFragment);
+  }
+
+
 
   /*   createCourse(dataOfCreateCourse: ListItem, index: number) {
       this.coursesItems[index].listItem.push(dataOfCreateCourse);
@@ -44,11 +49,9 @@ export class CoursesDataService {
           course.listItem.splice(index, 1, dataOfUpdateCourse)
         }
       });
-    }
-  
-    removeItem(dataOfCourse: ListItem) {
-      const course = this.coursesItems.map(course => ({ ...course, listItem: course.listItem.filter(course => course.id != dataOfCourse.id) }))
-      this.coursesItems = course;
-      console.log(this.coursesItems)
-    } */
+    }*/
+
+  removeItem(courseId: number, dataOfCourse: ListItem) {
+    return this.http.deleteCourse(courseId, dataOfCourse.id);
+  }
 }

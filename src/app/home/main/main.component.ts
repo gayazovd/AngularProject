@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, DoCheck, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Course } from 'src/app/app.model';
+import { Component, OnInit, Input, DoCheck, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Course, ListItem } from 'src/app/app.model';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/core/http.service';
+import { PopupService } from 'src/app/core/popup.service';
 
 @Component({
   selector: 'app-main',
@@ -17,7 +18,7 @@ export class MainComponent implements OnInit {
   private pageSize: number = 3;
 
 
-  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef) { }
+  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private popup: PopupService) { }
 
   ngOnInit() {
     this.loadData();
@@ -34,5 +35,22 @@ export class MainComponent implements OnInit {
     })
   }
 
+  searchingCourse(textFragment: string) {
+    this.coursesService.searchByCourses(textFragment).subscribe(data => {
+      this.courses = data.body;
+      this.isShow = false;
+      this.cd.detectChanges();
+    })
+  }
+
+  remove(course: Course) {
+    this.popup.createPopup(course.id, course.listItem[0]);
+    this.show();
+  }
+
+  show() {
+    console.log(this.popup)
+    this.popup.show()
+  }
 
 }

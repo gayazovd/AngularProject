@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { AppCourses, ListItem } from '../../app.model';
+import { Component, OnInit, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { AppCourses, ListItem, Course } from '../../app.model';
 import { PopupService } from 'src/app/core/popup.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,8 @@ export class CoursesListComponent implements OnInit {
 
     }
     @Input() public listItem: AppCourses;
+    @Input() public courseId: number;
+    @Output() remove = new EventEmitter<Course>()
 
     ngOnInit() { console.log(this.listItem) }
 
@@ -22,12 +24,7 @@ export class CoursesListComponent implements OnInit {
     }
 
     delete(course: ListItem) {
-        this.popup.createPopup(course);
-        this.show();
+        this.remove.emit({ id: this.courseId, listItem: [course] })
     }
 
-    show() {
-        console.log(this.popup)
-        this.popup.show()
-    }
 }

@@ -1,9 +1,10 @@
 <div class="courses-content">
   <div class="courses-content__main">
-    <app-courses-navigation>
+    <app-courses-navigation (searchingCourse)="searchingCourse($event)">
     </app-courses-navigation>
     <ng-template [ngIf]="courses" [ngIfElse]="noData">
-      <app-courses-list *ngFor="let item of courses;" [listItem]="item.listItem">
+      <app-courses-list *ngFor="let item of courses;" (remove)="remove($event)" [courseId]="item.id"
+        [listItem]="item.listItem">
       </app-courses-list>
       <button *ngIf="isShow" (click)="loadData()" class="button">Load More</button>
     </ng-template>

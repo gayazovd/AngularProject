@@ -17,7 +17,16 @@ export class HttpService {
       return throwError(err);
     }))
   }
+
   paging(start: number, count: number) {
     return this.http.get<Pagination<Course>>(`http://localhost:3004/courses?start=${start}&count=${count}`);
+  }
+
+  postForSearching(textFragment: string) {
+    return this.http.get<Pagination<Course>>(`http://localhost:3004/courses?textFragment=${textFragment}`);
+  }
+
+  deleteCourse(courseId: number, listItemId: number) {
+    return this.http.delete(`http://localhost:3004/courses/${courseId}/listItem/${listItemId}`)
   }
 }

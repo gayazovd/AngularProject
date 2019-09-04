@@ -5,13 +5,15 @@ import { ListItem } from '../app.model';
   providedIn: 'root'
 })
 export class PopupService {
+  public courseId: number;
   public data: ListItem;
   public isShow: boolean = false;
 
   constructor() { }
 
-  createPopup(dataForPopup: ListItem) {
+  createPopup(id: number, dataForPopup: ListItem) {
     this.data = dataForPopup;
+    this.courseId = id;
   }
 
   show() {

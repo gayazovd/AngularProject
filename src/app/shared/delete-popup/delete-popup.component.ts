@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, ChangeDetectorRef } from '@angular/core';
 import { PopupService } from 'src/app/core/popup.service';
 import { DeletePopup, ListItem } from 'src/app/app.model';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
@@ -11,6 +11,7 @@ import { CoursesDataService } from 'src/app/core/courses-data.service';
 export class DeletePopupComponent implements DoCheck {
   public isShow: boolean;
   public course: ListItem;
+  public courseId: number;
   constructor(private popup: PopupService, private coursesService: CoursesDataService) {
   }
 
@@ -18,6 +19,7 @@ export class DeletePopupComponent implements DoCheck {
   ngDoCheck() {
     this.isShow = this.popup.isShow;
     this.course = this.popup.data && this.popup.data
+    this.courseId = this.popup.courseId;
   }
 
   cancel() {
@@ -25,7 +27,7 @@ export class DeletePopupComponent implements DoCheck {
   }
 
   remove() {
-    // this.coursesService.removeItem(this.course);
+    this.coursesService.removeItem(this.courseId, this.course).subscribe();
     this.popup.hide();
   }
 

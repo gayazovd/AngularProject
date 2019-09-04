@@ -1,7 +1,9 @@
 export interface Course {
+    id: number;
     listItem: ListItem[];
     length?: number;
 }
+
 export interface AppCourses {
     length?: number;
     [index: number]: ListItem;

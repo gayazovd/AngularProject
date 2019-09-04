@@ -7,7 +7,7 @@
                     <span class="courses-list__text">Title</span>
                 </div>
                 <div class="courses-list__item">
-                    <span class="courses-list__quantity">Items: {{listItem.length}}</span>
+                    <span class="courses-list__quantity">Items: {{listItem && listItem.length}}</span>
                     <button type="button" class="courses-list__button" (click)="addLesson($event)">Add item</button>
                 </div>
             </div>
