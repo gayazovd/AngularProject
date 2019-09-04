@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
@@ -11,13 +10,16 @@ import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
 @NgModule({
     declarations: [AppComponent, FilterPipe, AddCourseComponent],
-    imports: [BrowserModule, SharedModule, HomeModule, FormsModule, LoginModule,
+    imports: [BrowserModule, BrowserAnimationsModule, SharedModule, HomeModule, FormsModule, LoginModule,
         RoutingModule, RouterModule, HttpClientModule],
+    exports: [],
     providers: [],
     bootstrap: [AppComponent]
 })

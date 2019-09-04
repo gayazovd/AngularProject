@@ -21,7 +21,8 @@
         </div>
         <ul>
 
-            <app-courses-list-item (delete)="delete($event)" *ngFor="let item of listItem" [course]=item>
+            <app-courses-list-item [courseId]="courseId" (delete)="delete($event)" *ngFor="let item of listItem"
+                [course]=item>
             </app-courses-list-item>
 
         </ul>

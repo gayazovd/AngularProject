@@ -11,11 +11,14 @@ import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AppModule } from '../app.module';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DeletePopupComponent } from '../shared/delete-popup/delete-popup.component';
+
 
 
 @NgModule({
     declarations: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, ChangeBorderColorDirective, MainComponent],
-    imports: [CommonModule, FormsModule, SharedModule, RouterModule],
+    imports: [SharedModule],
     exports: [CoursesNavigationComponent, CoursesListComponent, CoursesListItemComponent, MainComponent]
 })
 export class HomeModule { }

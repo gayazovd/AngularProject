@@ -39,3 +39,8 @@ export interface Pagination<T> {
     body: T[],
     count: number
 }
+
+export interface PopupData {
+    id: number,
+    data: ListItem
+}
