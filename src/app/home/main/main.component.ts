@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   private pageSize: number = 3;
 
 
-  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private popup: PopupService) { }
+  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.loadData();
@@ -43,14 +43,15 @@ export class MainComponent implements OnInit {
     })
   }
 
-  remove(course: Course) {
-    this.popup.createPopup(course.id, course.listItem[0]);
-    this.show();
+  remove() {
+
+    this.count = 0;
+    this.courses = [];
+    this.loadData();
   }
 
   show() {
-    console.log(this.popup)
-    this.popup.show()
+
   }
 
 }

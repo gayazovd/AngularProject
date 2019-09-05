@@ -12,11 +12,12 @@ import { CourseFormComponent } from './course-form/course-form.component';
 import { FormsModule } from '@angular/forms';
 import { AuthorsPipePipe } from './authors-pipe.pipe';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe],
   entryComponents: [DeletePopupComponent],
-  imports: [CommonModule, RouterModule, FormsModule, MatDialogModule],
-  exports: [CommonModule, RouterModule, FormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule]
+  imports: [CommonModule, RouterModule, FormsModule, MatDialogModule, MatButtonModule],
+  exports: [CommonModule, RouterModule, FormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule, MatButtonModule]
 })
 export class SharedModule { }

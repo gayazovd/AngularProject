@@ -1,21 +1,19 @@
-<!-- <div class="new-course__data-for-new-course">
+<div class="new-course__data-for-new-course">
   <label class="new-course__label" for="">Title*
-    <input class="new-course__text" [(ngModel)]="listItem.title" type="text">
+    <input class="new-course__text" [(ngModel)]="listItem.name" type="text">
   </label>
   <label class="new-course__label" for="">Description*
     <textarea rows="9" cols="40" [(ngModel)]="listItem.description" class="new-course__text"></textarea>
   </label>
   <label class="new-course__label" for="">Date*
-    <input class="new-course__text" [ngModel]="listItem.startDate | datePipe"
-      (ngModelChange)="listItem.startDate=$event" type="date">
+    <input class="new-course__text" [ngModel]="listItem.date | datePipe" (ngModelChange)="listItem.date=$event"
+      type="date">
   </label>
   <label class="new-course__label" for="">Duration*
-    <input class="new-course__text" [(ngModel)]="listItem.duration" type="text">
+    <input class="new-course__text" [ngModel]="listItem.length | durationPipe" (ngModelChange)="listItem.length=$event"
+      type="text">
   </label>
-  <label class="new-course__label" for="">Students*
-    <input class="new-course__text" [(ngModel)]="listItem.students" type="text">
+  <label class="new-course__label" for="">Authors*
+    <input class="new-course__text" [(ngModel)]="listItem.authors" type="text">
   </label>
-  <label class="new-course__label" for="">Video*
-    <input class="new-course__text" [(ngModel)]="listItem.video" type="text">
-  </label>
-</div> -->
+</div>

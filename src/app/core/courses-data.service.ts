@@ -23,6 +23,10 @@ export class CoursesDataService {
   }
 
 
+  getItemById(courseId: number, listItemId: number): Observable<ListItem> {
+    return this.http.getCourseById(courseId, listItemId)
+  }
+
 
   /*   createCourse(dataOfCreateCourse: ListItem, index: number) {
       this.coursesItems[index].listItem.push(dataOfCreateCourse);

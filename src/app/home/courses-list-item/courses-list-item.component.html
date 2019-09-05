@@ -5,7 +5,8 @@
     <div id="start-date" class="courses-list-item__data">{{course.date | datePipe}}</div>
     <div id="duration" class="courses-list-item__duration">{{course.length | durationPipe}}</div>
     <div id="action" class="courses-list-item__icon-wrapper">
-        <img (click)="edit()" class="courses-list-item__edit" [routerLink]="['/courses-page', course.id]"
+        <img (click)="edit()" class="courses-list-item__edit"
+            [routerLink]="['/courses-page', courseId, 'listItem', course.id]"
             src="../../../assets/edit-delete-icons/edit.png" alt="del">
         <img (click)="deleteLesson(course)" class="courses-list-item__delete"
             src="../../../assets/edit-delete-icons/delete.png" alt="del">

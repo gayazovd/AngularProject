@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesDataService } from '../core/courses-data.service';
-import { ListItem } from '../app.model';
+import { ListItem, IdByCourse } from '../app.model';
 
 @Component({
   selector: 'app-add-course',
@@ -11,6 +11,8 @@ import { ListItem } from '../app.model';
 export class AddCourseComponent implements OnInit {
   public courseId: number;
   public listItem: ListItem;
+  public listItemId: number;
+  public idByCourse: IdByCourse;
 
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CoursesDataService) { }
 
@@ -20,12 +22,13 @@ export class AddCourseComponent implements OnInit {
   }
 
   getCourse() {
+    this.courseService.getItemById(this.idByCourse.courseId, this.idByCourse.listItemId).subscribe(data => { this.listItem = data })
     // this.listItem = this.courseService.getItemById(this.courseId);
   }
 
   getParams() {
     this.route.params.subscribe(params => {
-      return params.coursesId !== 'new' ? this.courseId = +params.coursesId : null;
+      params.coursesId !== 'new' ? this.idByCourse = { courseId: +params.coursesId, listItemId: +params.listItemId } : null;
     });
   }
 

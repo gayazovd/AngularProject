@@ -41,6 +41,11 @@ export interface Pagination<T> {
 }
 
 export interface PopupData {
-    id: number,
-    data: ListItem
+    id: number;
+    listItem: ListItem;
+}
+
+export interface IdByCourse {
+    courseId: number;
+    listItemId: number;
 }

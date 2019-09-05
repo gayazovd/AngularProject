@@ -9,27 +9,30 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './delete-popup.component.html',
   styleUrls: ['./delete-popup.component.scss']
 })
-export class DeletePopupComponent implements DoCheck {
+export class DeletePopupComponent implements OnInit {
   public isShow: boolean;
   public course: ListItem;
   public courseId: number;
-  constructor(/* private popup: PopupService, private coursesService: CoursesDataService */public dialogRef: MatDialogRef<DeletePopupComponent>,
+  constructor(private coursesService: CoursesDataService, public dialogRef: MatDialogRef<DeletePopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PopupData) {
   }
 
+  ngOnInit() {
 
-  ngDoCheck() {
-    /*     this.isShow = this.popup.isShow;
-        this.course = this.popup.data && this.popup.data
-        this.courseId = this.popup.courseId; */
   }
+  /* ngDoCheck() {
+         this.isShow = this.popup.isShow;
+        this.course = this.popup.data && this.popup.data
+        this.courseId = this.popup.courseId; 
+  } */
 
   cancel() {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
     /* this.popup.hide(); */
   }
 
   remove() {
+    this.dialogRef.close(true);
     /*     this.coursesService.removeItem(this.courseId, this.course).subscribe();
         this.popup.hide(); */
   }
