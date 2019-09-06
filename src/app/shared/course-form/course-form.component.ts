@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ListItem } from 'src/app/app.model';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { ListItem, CreatedListItem } from 'src/app/app.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-form',
@@ -7,14 +8,29 @@ import { ListItem } from 'src/app/app.model';
   styleUrls: ['../../add-course/add-course.component.scss']
 })
 export class CourseFormComponent implements OnInit {
-  @Input() listItem: ListItem
+  @Input() listItem: ListItem;
+  @Output() save = new EventEmitter<ListItem>();
+  public flag: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     if (!this.listItem) {
-      this.listItem = { id: null, title: '', description: null, video: null, duration: null, isTopRated: null, date: null, students: null }
+      this.listItem = { id: Date.now(), name: '', description: null, length: null, isTopRated: false, date: new Date(), authors: null }
     }
+  }
+
+  saveListItem() {
+    this.save.emit(this.listItem)
+  }
+
+
+  onKeyInput(event) {
+    this.listItem.authors = event.target.value;
+  }
+
+  cancel() {
+    this.router.navigate(['/courses-page']);
   }
 
 }

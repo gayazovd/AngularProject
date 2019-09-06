@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesDataService } from '../core/courses-data.service';
-import { ListItem, IdByCourse } from '../app.model';
+import { ListItem, IdByCourse, CreatedListItem } from '../app.model';
 
 @Component({
   selector: 'app-add-course',
@@ -9,36 +9,34 @@ import { ListItem, IdByCourse } from '../app.model';
   styleUrls: ['./add-course.component.scss']
 })
 export class AddCourseComponent implements OnInit {
-  public courseId: number;
   public listItem: ListItem;
-  public listItemId: number;
   public idByCourse: IdByCourse;
 
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CoursesDataService) { }
 
   ngOnInit() {
     this.getParams();
-    this.getCourse();
+    if (this.idByCourse && this.idByCourse.listItemId) {
+      this.getCourse();
+    }
   }
 
   getCourse() {
-    this.courseService.getItemById(this.idByCourse.courseId, this.idByCourse.listItemId).subscribe(data => { this.listItem = data })
-    // this.listItem = this.courseService.getItemById(this.courseId);
+    this.courseService.getItemById(this.idByCourse.coursesId, this.idByCourse.listItemId).subscribe(data => { this.listItem = data })
   }
 
   getParams() {
     this.route.params.subscribe(params => {
-      params.coursesId !== 'new' ? this.idByCourse = { courseId: +params.coursesId, listItemId: +params.listItemId } : null;
+      params.listItemId ? this.idByCourse = { coursesId: +params.coursesId, listItemId: +params.listItemId } : this.idByCourse = { coursesId: +params.coursesId, listItemId: null };
     });
   }
 
-  save() {
-    // this.courseService.udateItem(this.listItem);
-    this.router.navigate(['/courses-page']);
-  }
-
-  cancel() {
-    this.router.navigate(['/courses-page']);
+  save(listItem: ListItem) {
+    if (this.idByCourse && this.idByCourse.listItemId) {
+      this.courseService.putUpdateListItem(listItem, this.idByCourse).subscribe(() => this.router.navigate(['/courses-page']));
+    } else {
+      this.courseService.postCreateListItem(listItem, this.idByCourse.coursesId).subscribe(() => this.router.navigate(['/courses-page']))
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable, ɵConsole } from '@angular/core';
-import { Course, ListItem, Pagination } from '../app.model';
+import { Course, ListItem, Pagination, IdByCourse } from '../app.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators'
@@ -27,11 +27,18 @@ export class CoursesDataService {
     return this.http.getCourseById(courseId, listItemId)
   }
 
+  putUpdateListItem(listItem: ListItem, idByCourse: IdByCourse) {
+    return this.http.putUpdateListItem(listItem, idByCourse);
+  }
+
+  postCreateListItem(listItem: ListItem, courseId: number) {
+    return this.http.postCreateListItem(listItem, courseId);
+  }
 
   /*   createCourse(dataOfCreateCourse: ListItem, index: number) {
       this.coursesItems[index].listItem.push(dataOfCreateCourse);
     }
-  
+   
     getItemById(id: number) {
       let listItem: ListItem;
       this.coursesItems.forEach(course => {
@@ -41,7 +48,7 @@ export class CoursesDataService {
       });
       return listItem;
     }
-  
+   
     udateItem(dataOfUpdateCourse: ListItem) {
       let index: number;
       this.coursesItems.forEach(course => {

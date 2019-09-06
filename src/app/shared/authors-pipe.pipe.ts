@@ -7,6 +7,8 @@ import { Author } from '../app.model';
 export class AuthorsPipePipe implements PipeTransform {
 
   transform(value: Author[]): string {
+    if (value === null) return;
+    if (typeof value === 'string') return value;
     let str = "";
     value.forEach(author => {
       if (value.length > 1) {

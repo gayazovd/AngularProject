@@ -1,19 +1,24 @@
 <div class="new-course__data-for-new-course">
   <label class="new-course__label" for="">Title*
-    <input class="new-course__text" [(ngModel)]="listItem.name" type="text">
+    <input class="new-course__text" [(ngModel)]="listItem && listItem.name" type="text">
   </label>
   <label class="new-course__label" for="">Description*
-    <textarea rows="9" cols="40" [(ngModel)]="listItem.description" class="new-course__text"></textarea>
+    <textarea rows="9" cols="40" [(ngModel)]="listItem && listItem.description" class="new-course__text"></textarea>
   </label>
   <label class="new-course__label" for="">Date*
-    <input class="new-course__text" [ngModel]="listItem.date | datePipe" (ngModelChange)="listItem.date=$event"
-      type="date">
+    <input class="new-course__text" [ngModel]="listItem && listItem.date | datePipe"
+      (ngModelChange)="listItem.date=$event" type="date">
   </label>
   <label class="new-course__label" for="">Duration*
-    <input class="new-course__text" [ngModel]="listItem.length | durationPipe" (ngModelChange)="listItem.length=$event"
-      type="text">
+    <input class="new-course__text" [ngModel]="listItem && listItem.length"
+      (ngModelChange)="listItem && listItem.length=$event" type="text">
   </label>
   <label class="new-course__label" for="">Authors*
-    <input class="new-course__text" [(ngModel)]="listItem.authors" type="text">
+    <input class="new-course__text" (keyup)="listItem && onKeyInput($event)" value='{{listItem && listItem.authors}}'
+      type="text">
   </label>
+</div>
+<div class="new-course__controllers">
+  <button (click)="saveListItem()" class="new-course__button">Save</button>
+  <button (click)="cancel()" class="new-course__button">Cancel</button>
 </div>

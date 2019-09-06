@@ -46,6 +46,11 @@ export interface PopupData {
 }
 
 export interface IdByCourse {
-    courseId: number;
+    coursesId: number;
     listItemId: number;
+}
+
+export interface CreatedListItem {
+    listItem: ListItem
+    flag: boolean;
 }

@@ -4,10 +4,6 @@
 </div>
 <div class="new-course">
   <div class="new-course__wrapper">
-    <app-course-form [listItem]="listItem"></app-course-form>
-    <div class="new-course__controllers">
-      <button (click)="save()" class="new-course__button">Save</button>
-      <button (click)="cancel()" class="new-course__button">Cancel</button>
-    </div>
+    <app-course-form (save)="save($event)" [listItem]="listItem"></app-course-form>
   </div>
 </div>

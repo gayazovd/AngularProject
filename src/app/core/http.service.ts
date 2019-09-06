@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Course, User, Pagination, ListItem } from '../app.model';
+import { Course, User, Pagination, ListItem, IdByCourse } from '../app.model';
 import { map, filter, switchMap, catchError } from 'rxjs/operators'
 
 @Injectable({
@@ -27,15 +27,19 @@ export class HttpService {
   }
 
   deleteCourse(courseId: number, listItemId: number) {
-    return this.http.delete(`api/courses/${courseId}/listItem/${listItemId}`)
+    return this.http.delete(`api/courses/${courseId}/listItem/${listItemId}`);
   }
 
   getCourseById(courseId: number, listItemId: number): Observable<ListItem> {
-    return this.http.get<ListItem>(`api/courses/${courseId}/listItem/${listItemId}`)
+    return this.http.get<ListItem>(`api/courses/${courseId}/listItem/${listItemId}`);
   }
 
-  updateCourse(courseId: number, listItemId: number) {
-    // return this.http.put(`api/courses/${courseId}/listItem/${listItemId}`)
+  putUpdateListItem(listItem: ListItem, idByCourse: IdByCourse) {
+    return this.http.put(`api/courses/${idByCourse.coursesId}/listItem/${idByCourse.listItemId}`, listItem);
+  }
+
+  postCreateListItem(listItem: ListItem, courseId: number) {
+    return this.http.post(`api/courses/${courseId}`, listItem);
   }
 
 }

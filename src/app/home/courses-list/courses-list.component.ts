@@ -21,8 +21,8 @@ export class CoursesListComponent implements OnInit {
 
     ngOnInit() { console.log(this.listItem) }
 
-    addLesson(e) {
-        this.route.navigate(['courses-page/new'])
+    addLesson() {
+        this.route.navigate(['/courses-page', this.courseId, 'new'])
     }
 
     delete() {
