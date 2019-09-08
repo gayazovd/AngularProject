@@ -9,9 +9,10 @@ import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './auth-iterceptor';
 
 
 
@@ -20,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     imports: [BrowserModule, BrowserAnimationsModule, SharedModule, HomeModule, FormsModule, LoginModule,
         RoutingModule, RouterModule, HttpClientModule],
     exports: [],
-    providers: [],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
