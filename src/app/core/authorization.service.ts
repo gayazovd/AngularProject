@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { User } from '../app.model';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  public userData: User;
+  private _userData = new Subject<User>();
+  public userData = this._userData.asObservable();
 
   constructor(private route: Router, private http: HttpService) { }
 
   login(user: User) {
     this.http.postAuthUserOnServer(user).subscribe(token => {
       localStorage.setItem("token", JSON.stringify(token));
-      localStorage.setItem("login", JSON.stringify(user.login))
+      this._userData.next(user);
       this.route.navigate(["courses-page"]);
     });
   }
@@ -23,11 +25,10 @@ export class AuthorizationService {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('login');
   }
 
   getUserInfo() {
-    return localStorage.getItem('login')
+    return this.userData;
   }
 
   isAuthenticated(): boolean {

@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
   constructor(private auth: AuthorizationService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      this.login = this.auth.getUserInfo();
-    }
+    this.auth.getUserInfo().subscribe(user => {
+      this.login = user.login;
+    });
   }
 
   logOut() {

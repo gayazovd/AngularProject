@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/core/http.service';
 import { PopupService } from 'src/app/core/popup.service';
 
+import { fromEvent, pipe } from 'rxjs';
+import { switchMap, filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -22,6 +25,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    this.searchingCourse();
   }
 
   loadData() {
@@ -35,8 +39,10 @@ export class MainComponent implements OnInit {
     })
   }
 
-  searchingCourse(textFragment: string) {
-    this.coursesService.searchByCourses(textFragment).subscribe(data => {
+  searchingCourse() {
+    this.coursesService.searchingCourse.pipe(
+      switchMap(val => this.coursesService.searchByCourses(val))
+    ).subscribe(data => {
       this.courses = data.body;
       this.isShow = false;
       this.cd.detectChanges();

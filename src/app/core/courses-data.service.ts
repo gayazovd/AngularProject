@@ -1,8 +1,8 @@
 import { Injectable, ɵConsole } from '@angular/core';
 import { Course, ListItem, Pagination, IdByCourse } from '../app.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators'
+import { Observable, Subject } from 'rxjs';
+import { map, filter, switchMap, debounceTime } from 'rxjs/operators'
 import { HttpService } from './http.service';
 const _ = require('lodash');
 
@@ -10,8 +10,19 @@ const _ = require('lodash');
   providedIn: 'root'
 })
 export class CoursesDataService {
+  private _searchingCourse = new Subject<string>();
+  public searchingCourse = this._searchingCourse.asObservable().pipe(
+    debounceTime(100),
+    map(value => value.length >= 3 ? value : '')
+  );
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) {
+
+  }
+
+  searching(value: string) {
+    this._searchingCourse.next(value);
+  }
 
   getList(count: number, pageSize: number): Observable<Pagination<Course>> {
     return this.http.paging(count, pageSize);

@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+import { CoursesDataService } from 'src/app/core/courses-data.service';
 
 
 @Component({
@@ -7,17 +10,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./courses-navigation.component.scss']
 })
 export class CoursesNavigationComponent implements OnInit {
-  constructor() { }
-  @Output() searchingCourse = new EventEmitter<string>();
+  constructor(private coursesService: CoursesDataService) { }
   public searchValue: string;
 
   ngOnInit() {
   }
 
   searchCourses(e) {
-    if (e.keyCode === 13) {
-      this.searchingCourse.emit(this.searchValue);
-    }
+    const inputValue = e.target.value;
+    this.coursesService.searching(inputValue)
   }
 
   addCourse() {
