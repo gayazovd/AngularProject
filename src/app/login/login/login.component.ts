@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from 'src/app/core/authorization.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   authorization() {
     const user = { login: this.login, password: this.password };
-    this.auth.login(user);
+    this.auth.login(user).pipe(
+      switchMap(() => this.auth.getUserInfo())
+    ).subscribe();
     this.clear();
   }
 

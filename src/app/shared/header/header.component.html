@@ -7,10 +7,8 @@
         <div class="courses-header__login">
             <div>
                 <span>{{login}}</span>
-                <span>Log Out</span>
-                <div>
-                    <span></span>
-                </div>
+                <span (click)='logOut()' *ngIf='login'>Log Out</span>
+                <span *ngIf='!login' [routerLink]="['/login']">Log In</span>
             </div>
         </div>
     </div>

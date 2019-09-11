@@ -46,32 +46,6 @@ export class CoursesDataService {
     return this.http.postCreateListItem(listItem, courseId);
   }
 
-  /*   createCourse(dataOfCreateCourse: ListItem, index: number) {
-      this.coursesItems[index].listItem.push(dataOfCreateCourse);
-    }
-   
-    getItemById(id: number) {
-      let listItem: ListItem;
-      this.coursesItems.forEach(course => {
-        if (!listItem) {
-          listItem = course.listItem.find(course => course.id === id);
-        }
-      });
-      return listItem;
-    }
-   
-    udateItem(dataOfUpdateCourse: ListItem) {
-      let index: number;
-      this.coursesItems.forEach(course => {
-        if (index >= 0) return;
-        index = course.listItem.findIndex(listItem => listItem.id === dataOfUpdateCourse.id)
-      });
-      this.coursesItems.forEach((course) => {
-        if (course.listItem.some(listitem => listitem.id === dataOfUpdateCourse.id)) {
-          course.listItem.splice(index, 1, dataOfUpdateCourse)
-        }
-      });
-    }*/
 
   removeItem(courseId: number, dataOfCourse: ListItem) {
     return this.http.deleteCourse(courseId, dataOfCourse.id);

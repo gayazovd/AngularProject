@@ -1,42 +1,45 @@
 import { Injectable } from '@angular/core';
-import { User } from '../app.model';
+import { User, InfoAboutUser } from '../app.model';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
+import { switchMap, debounceTime, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  private _userData = new Subject<User>();
+  private _userData = new Subject<InfoAboutUser>();
   public userData = this._userData.asObservable();
 
   constructor(private route: Router, private http: HttpService) { }
 
   login(user: User) {
-    this.http.postAuthUserOnServer(user).subscribe(token => {
+    return this.http.postAuthUserOnServer(user).pipe(tap(token => {
       localStorage.setItem("token", JSON.stringify(token));
-      this._userData.next(user);
       this.route.navigate(["courses-page"]);
-    });
+    }))
   }
 
 
   logout() {
     localStorage.removeItem('token');
+    this._userData.next(null);
   }
 
   getUserInfo() {
-    return this.userData;
+    return this.http.getUserInfo().pipe(tap(user => this._userData.next(user)));
   }
 
-  isAuthenticated(): boolean {
+
+
+  isAuthenticated(): Observable<boolean> {
     if (localStorage.getItem('token')) {
-      return true;
+      return of(true);
     } else {
       this.route.navigate(['login']);
-      return false;
+      return of(false);
     }
   }
 }

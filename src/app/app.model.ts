@@ -24,9 +24,22 @@ export interface ListItem {
     description: string;
 }
 
+export interface InfoAboutUser {
+    id: number;
+    fakeToken: string;
+    name: UserInfo;
+    login: string;
+    password: string;
+}
+
 export interface User {
     login: string;
     password: string;
+}
+
+export interface UserInfo {
+    first: string;
+    last: string;
 }
 
 export interface Author {
