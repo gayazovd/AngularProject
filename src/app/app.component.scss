@@ -1,6 +1,11 @@
 @import '../../common/mixins.scss';
 @import '../../common/common.style.scss';
 
+.container{
+    height: 100%;
+    width: 100%;
+}
+
 .courses-content{
     @include element(no-data-wrapper){
         padding: 20px;

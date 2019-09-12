@@ -1,9 +1,10 @@
 import { Injectable, ɵConsole } from '@angular/core';
 import { Course, ListItem, Pagination, IdByCourse } from '../app.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { map, filter, switchMap, debounceTime } from 'rxjs/operators'
+import { Observable, Subject, combineLatest, timer } from 'rxjs';
+import { map, filter, switchMap, debounceTime, tap } from 'rxjs/operators'
 import { HttpService } from './http.service';
+import { LoadingService } from './loading.service';
 const _ = require('lodash');
 
 @Injectable({
@@ -16,7 +17,7 @@ export class CoursesDataService {
     map(value => value.length >= 3 ? value : '')
   );
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService, private load: LoadingService) {
 
   }
 
@@ -24,22 +25,25 @@ export class CoursesDataService {
     this._searchingCourse.next(value);
   }
 
-  getList(count: number, pageSize: number): Observable<Pagination<Course>> {
-    return this.http.paging(count, pageSize);
+  getList(count: number, pageSize: number) {
+    this.load.changeLoadState(true)
+    return combineLatest(this.http.paging(count, pageSize), timer(500))
   }
 
 
   searchByCourses(textFragment: string) {
-    return this.http.postForSearching(textFragment);
+    this.load.changeLoadState(true)
+    return combineLatest(this.http.postForSearching(textFragment), timer(500))
   }
 
 
-  getItemById(courseId: number, listItemId: number): Observable<ListItem> {
-    return this.http.getCourseById(courseId, listItemId)
+  getItemById(courseId: number, listItemId: number) {
+    this.load.changeLoadState(true);
+    return combineLatest(this.http.getCourseById(courseId, listItemId), timer(500))
   }
 
   putUpdateListItem(listItem: ListItem, idByCourse: IdByCourse) {
-    return this.http.putUpdateListItem(listItem, idByCourse);
+    return this.http.putUpdateListItem(listItem, idByCourse)
   }
 
   postCreateListItem(listItem: ListItem, courseId: number) {
@@ -48,6 +52,6 @@ export class CoursesDataService {
 
 
   removeItem(courseId: number, dataOfCourse: ListItem) {
-    return this.http.deleteCourse(courseId, dataOfCourse.id);
+    return this.http.deleteCourse(courseId, dataOfCourse.id)
   }
 }

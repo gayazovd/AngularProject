@@ -7,6 +7,7 @@ import { PopupService } from 'src/app/core/popup.service';
 
 import { fromEvent, pipe } from 'rxjs';
 import { switchMap, filter } from 'rxjs/operators';
+import { LoadingService } from 'src/app/core/loading.service';
 
 @Component({
   selector: 'app-main',
@@ -21,7 +22,7 @@ export class MainComponent implements OnInit {
   private pageSize: number = 3;
 
 
-  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef) { }
+  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private load: LoadingService) { }
 
   ngOnInit() {
     this.loadData();
@@ -29,12 +30,13 @@ export class MainComponent implements OnInit {
   }
 
   loadData() {
-    this.coursesService.getList(this.count, this.pageSize).subscribe(data => {
+    this.coursesService.getList(this.count, this.pageSize).subscribe(([data]) => {
       this.count = this.count + this.pageSize;
       this.courses = this.courses.concat(data.body)
       if (this.count >= data.count) {
         this.isShow = false;
       }
+      this.load.changeLoadState(false)
       this.cd.detectChanges();
     })
   }
@@ -42,9 +44,10 @@ export class MainComponent implements OnInit {
   searchingCourse() {
     this.coursesService.searchingCourse.pipe(
       switchMap(val => this.coursesService.searchByCourses(val))
-    ).subscribe(data => {
+    ).subscribe(([data]) => {
       this.courses = data.body;
       this.isShow = false;
+      this.load.changeLoadState(false);
       this.cd.detectChanges();
     })
   }
