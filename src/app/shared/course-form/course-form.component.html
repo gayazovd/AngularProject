@@ -1,24 +1,27 @@
-<div class="new-course__data-for-new-course">
-  <label class="new-course__label" for="">Title*
-    <input class="new-course__text" [(ngModel)]="listItem && listItem.name" type="text">
-  </label>
-  <label class="new-course__label" for="">Description*
-    <textarea rows="9" cols="40" [(ngModel)]="listItem && listItem.description" class="new-course__text"></textarea>
-  </label>
-  <label class="new-course__label" for="">Date*
-    <input class="new-course__text" [ngModel]="listItem && listItem.date | datePipe"
-      (ngModelChange)="listItem.date=$event" type="date">
-  </label>
-  <label class="new-course__label" for="">Duration*
-    <input class="new-course__text" [ngModel]="listItem && listItem.length"
-      (ngModelChange)="listItem && listItem.length=$event" type="text">
-  </label>
-  <label class="new-course__label" for="">Authors*
-    <input class="new-course__text" (keyup)="listItem && onKeyInput($event)" value='{{listItem && listItem.authors}}'
-      type="text">
-  </label>
-</div>
-<div class="new-course__controllers">
-  <button (click)="saveListItem()" class="new-course__button">Save</button>
-  <button (click)="cancel()" class="new-course__button">Cancel</button>
-</div>
+<form [formGroup]="courseInformation">
+  <div class="new-course__data-for-new-course">
+    <label class="new-course__label" for="">Title*
+      <input class="new-course__text" formControlName="name" type="text">
+    </label>
+    <label class="new-course__label" for="">Description*
+      <textarea rows="9" cols="40" formControlName="description" class="new-course__text"></textarea>
+    </label>
+    <label class="new-course__label" for="">Date*
+      <input class="new-course__text" formControlName="date" type="date">
+    </label>
+    <label class="new-course__label" for="">Duration*
+      <input class="new-course__text" formControlName="duration" type="text">
+    </label>
+    <div formArrayName="authors" *ngFor="let author of authors.controls; let i = index">
+      <div [formGroupName]="i">
+        <label class="new-course__label" for="">Authors*
+          <input class="new-course__text" formCoontrolName="firstName" type="text">
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="new-course__controllers">
+    <button type="button" (click)="saveListItem()" class="new-course__button">Save</button>
+    <button type="button" (click)="cancel()" class="new-course__button">Cancel</button>
+  </div>
+</form>
