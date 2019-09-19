@@ -10,15 +10,13 @@
       <input class="new-course__text" formControlName="date" type="date">
     </label>
     <label class="new-course__label" for="">Duration*
-      <input class="new-course__text" formControlName="duration" type="text">
+      <input class="new-course__text" formControlName="length" type="text">
     </label>
-    <div formArrayName="authors" *ngFor="let author of authors.controls; let i = index">
-      <div [formGroupName]="i">
-        <label class="new-course__label" for="">Authors*
-          <input class="new-course__text" formCoontrolName="firstName" type="text">
-        </label>
-      </div>
-    </div>
+    <label class="new-course__label" for="">Authors*
+      <ng-select class="select" [items]="authorsFromServer | async" [multiple]="true" bindLabel="name"
+        placeholder="Select Author" [closeOnSelect]="false" [searchable]="false" formControlName="authors">
+      </ng-select>
+    </label>
   </div>
   <div class="new-course__controllers">
     <button type="button" (click)="saveListItem()" class="new-course__button">Save</button>

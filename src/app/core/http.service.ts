@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Course, User, Pagination, ListItem, IdByCourse, InfoAboutUser } from '../app.model';
+import { Course, User, Pagination, ListItem, IdByCourse, InfoAboutUser, AuthorFromServer } from '../app.model';
 import { map, filter, switchMap, catchError } from 'rxjs/operators'
 
 @Injectable({
@@ -44,6 +44,10 @@ export class HttpService {
 
   getUserInfo() {
     return this.http.get<InfoAboutUser>('/api/auth/userinfo');
+  }
+
+  getAuthors() {
+    return this.http.get<AuthorFromServer[]>('/api/authors');
   }
 
 }

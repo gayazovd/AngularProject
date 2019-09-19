@@ -54,4 +54,8 @@ export class CoursesDataService {
   removeItem(courseId: number, dataOfCourse: ListItem) {
     return this.http.deleteCourse(courseId, dataOfCourse.id)
   }
+
+  getAuthors() {
+   return this.http.getAuthors();
+  }
 }

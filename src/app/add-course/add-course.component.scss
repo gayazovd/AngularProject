@@ -32,6 +32,7 @@
         justify-content: space-between;
         width: 400px;
         padding: 5px;
+        padding-bottom: 15px;
     }
     @include element(controllers){
         display: flex;
@@ -46,3 +47,14 @@
         box-shadow: $courses-component-box-shadow;
     }
 }
+
+.select{
+    width: 200px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: $default-border-components;
+    box-shadow: $courses-component-box-shadow;
+}
+

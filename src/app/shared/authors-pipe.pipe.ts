@@ -12,9 +12,9 @@ export class AuthorsPipePipe implements PipeTransform {
     let str = "";
     value.forEach(author => {
       if (value.length > 1) {
-        str += author.firstName + ' ' + author.lastName + ', ';
+        str += author.firstName + ' ' + author.name + ', ';
       } else {
-        str += author.firstName + ' ' + author.lastName;
+        str += author.firstName + ' ' + author.name;
       }
     })
     return str;

@@ -14,11 +14,12 @@ import { AuthorsPipePipe } from './authors-pipe.pipe';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, LoadingSpinnerComponent],
   entryComponents: [DeletePopupComponent],
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MatDialogModule, MatButtonModule],
-  exports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule, MatButtonModule, LoadingSpinnerComponent]
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MatDialogModule, MatButtonModule, NgSelectModule],
+  exports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule, MatButtonModule, LoadingSpinnerComponent, NgSelectModule]
 })
 export class SharedModule { }

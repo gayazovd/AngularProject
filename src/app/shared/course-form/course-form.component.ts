@@ -1,63 +1,60 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ListItem, CreatedListItem } from 'src/app/app.model';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ɵConsole } from '@angular/core';
+import { ListItem, CreatedListItem, AuthorFromServer } from 'src/app/app.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { CoursesDataService } from 'src/app/core/courses-data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
   styleUrls: ['../../add-course/add-course.component.scss']
 })
-export class CourseFormComponent implements OnInit {
+export class CourseFormComponent implements OnInit, OnChanges {
   @Input() listItem: ListItem;
   @Output() save = new EventEmitter<ListItem>();
+  authorsFromServer: Observable<AuthorFromServer[]>
 
   public courseInformation = new FormGroup({
+    id: new FormControl(),
     name: new FormControl(),
     description: new FormControl(),
     date: new FormControl(),
-    duration: new FormControl(),
-    authors: new FormArray([
-      this.createAuthors()
-    ])
+    length: new FormControl(),
+    authors: new FormControl()
   })
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private coursesService: CoursesDataService) { }
 
   get authors() {
     return this.courseInformation.get('authors') as FormArray;
   }
 
   ngOnInit() {
+    this.authorsFromServer = this.coursesService.getAuthors()
+  }
+
+  ngOnChanges() {
     if (this.listItem) {
-      this.courseInformation.setValue(
+      this.courseInformation.patchValue(
         {
+          id: this.listItem.id,
           name: this.listItem.name,
           description: this.listItem.description,
           date: this.listItem.date,
-          duration: this.listItem.length,
+          length: this.listItem.length,
           authors: this.listItem.authors
         }
       )
     }
   }
 
-
-  createAuthors() {
-    return new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl()
-    })
-  }
-
   saveListItem() {
-    this.save.emit(this.listItem)
+    this.save.emit(this.courseInformation.value)
   }
 
 
-  onKeyInput(event) {
-    this.listItem.authors = event.target.value;
-  }
+
 
   cancel() {
     this.router.navigate(['/courses-page']);

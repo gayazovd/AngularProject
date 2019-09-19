@@ -42,10 +42,15 @@ export interface UserInfo {
     last: string;
 }
 
+export interface AuthorFromServer {
+    id: string;
+    name: string;
+}
+
 export interface Author {
     id: number,
     firstName: string,
-    lastName: string
+    name: string
 }
 
 export interface Pagination<T> {

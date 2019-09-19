@@ -13,7 +13,12 @@ export class AddCourseComponent implements OnInit {
   public listItem: ListItem;
   public idByCourse: IdByCourse;
 
-  constructor(private router: Router, private route: ActivatedRoute, private courseService: CoursesDataService, private load: LoadingService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private courseService: CoursesDataService,
+    private load: LoadingService
+  ) { }
 
   ngOnInit() {
     this.getParams();
