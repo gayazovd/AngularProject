@@ -1,0 +1,5 @@
+<label class="new-course__label" for="">Date*
+    <input class="new-course__text" [ngClass]="controlDate.invalid ? 'red' : null " (change)="changeDate($event)"
+        value={{date}} type="date">
+    <div class="error" *ngIf="controlDate.invalid">Данные даты не корректны*</div>
+</label>

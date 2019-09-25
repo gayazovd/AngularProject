@@ -28,10 +28,11 @@
         box-shadow: $courses-component-box-shadow;
     }
     @include element(label){
+        position: relative;
         display: flex;
         justify-content: space-between;
         width: 400px;
-        padding: 5px;
+        padding: 10px;
         padding-bottom: 15px;
     }
     @include element(controllers){
@@ -58,3 +59,22 @@
     box-shadow: $courses-component-box-shadow;
 }
 
+.ng-touched.ng-invalid{
+    border-color: red;
+}
+
+.errorMessage{
+    position: absolute;
+    top: -9px;
+    left: 209px;
+    color: red;
+    width: 270px;
+}
+
+.error{
+    // position: absolute;
+    // top: -9px;
+    // left: 209px;
+    color: red;
+    width: 270px;
+}

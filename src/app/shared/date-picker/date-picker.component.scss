@@ -1,0 +1,38 @@
+@import '../../../../common/mixins.scss';
+@import '../../../../common/common.style.scss';
+
+.new-course__label{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    padding: 10px;
+    padding-bottom: 15px;
+};
+
+.new-course__text{
+    width: 200px;
+    box-sizing: border-box;
+    height: $navigation-height;
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 30px;
+    border: $default-border-components;
+    box-shadow: $courses-component-box-shadow;
+}
+
+.ng-touched.ng-invalid{
+    border-color: red;
+}
+
+.red{
+    border-color: red;
+}
+
+.error{
+    position: absolute;
+    top: -9px;
+    left: 209px;
+    color: red;
+    width: 270px;
+}

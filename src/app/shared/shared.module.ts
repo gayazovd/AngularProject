@@ -15,11 +15,13 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { DateFormatValidatorDirective } from './date-format-validator.directive';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, LoadingSpinnerComponent],
+  declarations: [HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, NotFoundComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, LoadingSpinnerComponent, DatePickerComponent, DateFormatValidatorDirective],
   entryComponents: [DeletePopupComponent],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MatDialogModule, MatButtonModule, NgSelectModule],
-  exports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule, MatButtonModule, LoadingSpinnerComponent, NgSelectModule]
+  exports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, HeaderComponent, FooterComponent, TitleComponent, DeletePopupComponent, DatePipePipe, DurationPipePipe, CourseFormComponent, AuthorsPipePipe, MatDialogModule, MatButtonModule, LoadingSpinnerComponent, NgSelectModule, DatePickerComponent]
 })
 export class SharedModule { }
