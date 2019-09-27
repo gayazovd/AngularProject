@@ -20,7 +20,7 @@
       <label class="new-course__label" for="">Date*</label>
       <div>
         <div class="errorMessage" *ngIf="isControlInvalid('date')">Укажите дату*</div>
-        <app-date-picker formControlName="date"></app-date-picker>
+        <app-date-picker appDateFormatValidator formControlName="date"></app-date-picker>
       </div>
     </div>
     <div class="new-course__wrapper-data">

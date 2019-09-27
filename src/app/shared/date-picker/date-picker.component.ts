@@ -10,14 +10,12 @@ import * as moment from 'moment';
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DatePickerComponent),
     multi: true
-  },
-  { provide: NG_VALIDATORS, useExisting: DatePickerComponent, multi: true }]
+  }]
 })
-export class DatePickerComponent implements ControlValueAccessor, Validator, OnInit {
+export class DatePickerComponent implements ControlValueAccessor, OnInit {
 
   private _date: string;
   private _controlDate: FormControl;
-  public emptyField: boolean = false;
 
   constructor() { }
 
@@ -41,27 +39,13 @@ export class DatePickerComponent implements ControlValueAccessor, Validator, OnI
   }
 
   writeValue(value: string) {
-    if (!value) {
-      this.emptyField = true;
-    } else {
-      this.emptyField = false;
-      const correctDate = moment(value).format('YYYY-MM-DD');
-      this._date = correctDate;
-    }
+
+    const correctDate = moment(value).format('YYYY-MM-DD');
+    this._date = correctDate;
     this.onChange(value);
   }
 
-  validate(control: FormControl): ValidationErrors {
-    if (control.untouched) {
-      return null;
-    }
-    const messege = {
-      invalid: true
-    }
-    console.log(control)
-    return this.emptyField ? messege : null;
 
-  }
 
   onChange: any = () => { };
 

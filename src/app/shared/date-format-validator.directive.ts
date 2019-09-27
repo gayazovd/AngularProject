@@ -1,6 +1,7 @@
 import { Directive } from '@angular/core';
 import { Validator, FormControl, ValidationErrors, NG_VALIDATORS } from '@angular/forms';
 import * as moment from 'moment';
+import { error } from 'util';
 
 @Directive({
   selector: '[appDateFormatValidator]',
@@ -8,16 +9,24 @@ import * as moment from 'moment';
 })
 export class DateFormatValidatorDirective implements Validator {
 
+  public emptyField: boolean = false;
+
   constructor() { }
 
   validate(control: FormControl): ValidationErrors {
-    const date = moment(control.value);
-    const messege = {
-      'dateFormat': {
-        'message': 'date is not correct format'
-      }
+    if (!control.value) {
+      this.emptyField = true;
+    } else {
+      this.emptyField = false;
     }
-    return date.isValid() ? null : messege;
+    if (control.untouched) {
+      return null;
+    }
+    const messege = {
+      invalid: true
+    }
+    console.log(control)
+    return this.emptyField ? messege : null;
   }
 
 }
