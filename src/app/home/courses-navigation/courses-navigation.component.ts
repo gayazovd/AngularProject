@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -11,14 +12,18 @@ import { CoursesDataService } from 'src/app/core/courses-data.service';
 })
 export class CoursesNavigationComponent implements OnInit {
   constructor(private coursesService: CoursesDataService) { }
-  public searchValue: string;
+  private _searchValue: FormControl;
 
   ngOnInit() {
+    this._searchValue = new FormControl('')
   }
 
-  searchCourses(e) {
-    const inputValue = e.target.value;
-    this.coursesService.searching(inputValue)
+  get searchValue() {
+    return this._searchValue;
+  }
+
+  searchCourses() {
+    this.coursesService.searching(this.searchValue.value)
   }
 
   addCourse() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { CoursesDataService } from 'src/app/core/courses-data.service';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-course-form',
@@ -20,11 +21,11 @@ export class CourseFormComponent implements OnInit, OnChanges {
   }
 
   public courseInformation = new FormGroup({
-    id: new FormControl(),
+    id: new FormControl(Date.now()),
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     description: new FormControl('', [Validators.required, Validators.maxLength(500)]),
     date: new FormControl('', [Validators.required]),
-    length: new FormControl('', [Validators.required]),
+    length: new FormControl('', [Validators.required, this.isNumber]),
     authors: new FormControl('', [Validators.required])
   })
 
@@ -32,6 +33,13 @@ export class CourseFormComponent implements OnInit, OnChanges {
 
   get authors() {
     return this.courseInformation.get('authors') as FormArray;
+  }
+
+  isNumber(control: FormControl) {
+    if (!isFinite(control.value) && !(control.value === parseInt(control.value, 10))) {
+      return { invalidControl: true };
+    }
+    return null;
   }
 
   ngOnInit() {
@@ -66,7 +74,6 @@ export class CourseFormComponent implements OnInit, OnChanges {
       Object.keys(controls).forEach(controlName => this.courseInformation.get(controlName).markAllAsTouched());
       return;
     }
-
     this.save.emit(this.courseInformation.value)
   }
 

@@ -1,7 +1,7 @@
 <div class="wrapper">
     <form class="courses-navigation__searching-bar">
         <label class="courses-navigation__label" for="search">Courses</label>
-        <input (keyup)="searchCourses($event)" value="" name="searchValue" type="text" id="search"
+        <input (keyup)="searchCourses()" [formControl]="searchValue" name="searchValue" type="text" id="search"
             placeholder="Search course" class="courses-navigation__search-input" />
         <div class="courses-navigation__search-icon"></div>
     </form>

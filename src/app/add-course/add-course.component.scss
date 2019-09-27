@@ -47,6 +47,12 @@
         width: 100px;
         box-shadow: $courses-component-box-shadow;
     }
+    @include element(wrapper-data){
+        display: flex;
+        padding: 15px;
+        width: 400px;
+        justify-content: space-between;
+    }
 }
 
 .select{
@@ -64,17 +70,10 @@
 }
 
 .errorMessage{
-    position: absolute;
-    top: -9px;
-    left: 209px;
     color: red;
-    width: 270px;
 }
 
-.error{
-    // position: absolute;
-    // top: -9px;
-    // left: 209px;
-    color: red;
-    width: 270px;
+
+#description{
+    height: 150px;
 }

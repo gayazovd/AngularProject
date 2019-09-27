@@ -14,7 +14,7 @@ export class CoursesDataService {
   private _searchingCourse = new Subject<string>();
   public searchingCourse = this._searchingCourse.asObservable().pipe(
     debounceTime(100),
-    map(value => value.length >= 3 ? value : '')
+    filter(value => value.length >= 3 || value.length === 0)
   );
 
   constructor(private http: HttpService, private load: LoadingService) {
@@ -56,6 +56,6 @@ export class CoursesDataService {
   }
 
   getAuthors() {
-   return this.http.getAuthors();
+    return this.http.getAuthors();
   }
 }

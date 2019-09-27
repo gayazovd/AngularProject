@@ -16,7 +16,8 @@ import * as moment from 'moment';
 export class DatePickerComponent implements ControlValueAccessor, Validator, OnInit {
 
   private _date: string;
-  private _controlDate: FormControl
+  private _controlDate: FormControl;
+  public emptyField: boolean = false;
 
   constructor() { }
 
@@ -35,21 +36,31 @@ export class DatePickerComponent implements ControlValueAccessor, Validator, OnI
     this.writeValue(e.target.value);
   }
 
+  onBlur() {
+    this.onTouched()
+  }
+
   writeValue(value: string) {
-    const correctDate = moment(value).format('YYYY-MM-DD');
-    this._date = correctDate;
+    if (!value) {
+      this.emptyField = true;
+    } else {
+      this.emptyField = false;
+      const correctDate = moment(value).format('YYYY-MM-DD');
+      this._date = correctDate;
+    }
     this.onChange(value);
   }
 
   validate(control: FormControl): ValidationErrors {
-    this._controlDate = control;
-    const date = moment(control.value);
-    const messege = {
-      'dateFormat': {
-        'message': 'date is not correct format'
-      }
+    if (control.untouched) {
+      return null;
     }
-    return date.isValid() ? null : messege;
+    const messege = {
+      invalid: true
+    }
+    console.log(control)
+    return this.emptyField ? messege : null;
+
   }
 
   onChange: any = () => { };

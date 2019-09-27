@@ -21,7 +21,7 @@
     box-shadow: $courses-component-box-shadow;
 }
 
-.ng-touched.ng-invalid{
+:host.ng-touched.ng-invalid input{
     border-color: red;
 }
 

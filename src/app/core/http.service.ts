@@ -3,17 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Course, User, Pagination, ListItem, IdByCourse, InfoAboutUser, AuthorFromServer } from '../app.model';
 import { map, filter, switchMap, catchError } from 'rxjs/operators'
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private load: LoadingService) { }
 
   postAuthUserOnServer(user: User) {
     return this.http.post("/api/auth/login", user).pipe(map(data => data), catchError(err => {
       alert(err.error);
+      this.load.changeLoadState(false);
       return throwError(err);
     }))
   }

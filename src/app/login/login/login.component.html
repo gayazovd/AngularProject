@@ -1,9 +1,9 @@
 <div class="container">
-	<div class="login-container">
+	<form [formGroup]='user' class="login-container">
 		<div class="login-container__data">
-			<input class="login-container__login" placeholder="Login" [(ngModel)]="login" type="text">
-			<input class="login-container__password" placeholder="Password" [(ngModel)]="password" type="password">
+			<input class="login-container__login" placeholder="Login" formControlName="login" type="text">
+			<input class="login-container__password" placeholder="Password" formControlName="password" type="password">
 		</div>
 		<button class="login-container__button" (click)="authorization()">Login</button>
-	</div>
+	</form>
 </div>

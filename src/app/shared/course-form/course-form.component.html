@@ -1,24 +1,46 @@
 <form [formGroup]="courseInformation">
   <div class="new-course__data-for-new-course">
-    <label class="new-course__label" for="">Title*
-      <input class="new-course__text" formControlName="name" type="text">
-      <div class="errorMessage" *ngIf="isControlInvalid('name')">Введено неправильное имя*</div>
-    </label>
-    <label class="new-course__label" for="">Description*
-      <textarea rows="9" cols="40" formControlName="description" class="new-course__text"></textarea>
-      <div class="errorMessage" *ngIf="isControlInvalid('description')">Введено неправильное описание*</div>
-    </label>
-    <app-date-picker appDateFormatValidator formControlName="date"></app-date-picker>
-    <label class="new-course__label" for="">Duration*
-      <input class="new-course__text" formControlName="length" type="text">
-      <div class="errorMessage" *ngIf="isControlInvalid('length')">Укажите длительность*</div>
-    </label>
-    <label class="new-course__label" for="">Authors*
-      <ng-select class="select" [items]="authorsFromServer | async" [multiple]="true" bindLabel="name"
-        placeholder="Select Author" [closeOnSelect]="false" [searchable]="false" formControlName="authors">
-      </ng-select>
-      <div class="errorMessage" *ngIf="isControlInvalid('authors')">Укажите автора*</div>
-    </label>
+    <div class="new-course__wrapper-data">
+      <label class="new-course__label" for="">Title*
+      </label>
+      <div>
+        <div class="errorMessage" *ngIf="isControlInvalid('name')">Введено неправильное имя*</div>
+        <input class="new-course__text" formControlName="name" type="text">
+      </div>
+    </div>
+    <div class="new-course__wrapper-data">
+      <label class="new-course__label" for="">Description*
+      </label>
+      <div>
+        <div class="errorMessage" *ngIf="isControlInvalid('description')">Введено неправильное описание*</div>
+        <textarea rows="9" cols="40" formControlName="description" id="description" class="new-course__text"></textarea>
+      </div>
+    </div>
+    <div class="new-course__wrapper-data">
+      <label class="new-course__label" for="">Date*</label>
+      <div>
+        <div class="errorMessage" *ngIf="isControlInvalid('date')">Укажите дату*</div>
+        <app-date-picker formControlName="date"></app-date-picker>
+      </div>
+    </div>
+    <div class="new-course__wrapper-data">
+      <label class="new-course__label" for="">Duration*
+      </label>
+      <div>
+        <div class="errorMessage" *ngIf="isControlInvalid('length')">Укажите длительность*</div>
+        <input class="new-course__text" formControlName="length" type="text">
+      </div>
+    </div>
+    <div class="new-course__wrapper-data">
+      <label class="new-course__label" for="">Authors*
+      </label>
+      <div>
+        <div class="errorMessage" *ngIf="isControlInvalid('authors')">Укажите автора*</div>
+        <ng-select class="select" [items]="authorsFromServer | async" [multiple]="true" bindLabel="name"
+          placeholder="Select Author" [closeOnSelect]="false" [searchable]="false" formControlName="authors">
+        </ng-select>
+      </div>
+    </div>
   </div>
   <div class="new-course__controllers">
     <button type="button" (click)="onSubmit()" class="new-course__button">Save</button>
