@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   public courses: Course[] = [];
   private count: number = 0;
   public isShow: boolean = true;
-  private pageSize: number = 3;
+  public readonly pageSize: number = 3;
 
 
   constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private load: LoadingService) { }

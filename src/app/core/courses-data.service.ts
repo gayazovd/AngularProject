@@ -5,7 +5,7 @@ import { Observable, Subject, combineLatest, timer } from 'rxjs';
 import { map, filter, switchMap, debounceTime, tap } from 'rxjs/operators'
 import { HttpService } from './http.service';
 import { LoadingService } from './loading.service';
-const _ = require('lodash');
+
 
 @Injectable({
   providedIn: 'root'

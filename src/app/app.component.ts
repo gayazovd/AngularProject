@@ -13,8 +13,4 @@ export class AppComponent {
     }
 
 
-    searchCourse(str: string) {
-        // this.courses = new FilterPipe().transform(str, this.coursesItems);
-    }
-
 }

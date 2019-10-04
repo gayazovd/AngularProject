@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
 import { LoginModule } from './login/login.module';
 import { RoutingModule } from './routing/routing.module';
 import { AddCourseComponent } from './add-course/add-course.component';
@@ -17,7 +16,7 @@ import { AuthInterceptor } from './auth-iterceptor';
 
 
 @NgModule({
-    declarations: [AppComponent, FilterPipe, AddCourseComponent],
+    declarations: [AppComponent, AddCourseComponent],
     imports: [BrowserModule, BrowserAnimationsModule, SharedModule, HomeModule, LoginModule,
         RoutingModule, RouterModule, HttpClientModule],
     exports: [],
