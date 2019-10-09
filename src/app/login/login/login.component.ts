@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from 'src/app/core/authorization.service';
 import { switchMap } from 'rxjs/operators';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { State } from '../reducer/auth-reducer';
+import { AuthActionTypes } from '../actions/actions';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   private _user: FormGroup;
-  constructor(private auth: AuthorizationService) { }
+  constructor(private store: Store<{ authUser: State }>, private auth: AuthorizationService) {
+
+  }
 
   ngOnInit() {
     this._user = new FormGroup({

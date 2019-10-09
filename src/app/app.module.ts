@@ -12,13 +12,27 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './auth-iterceptor';
+import { StoreModule } from '@ngrx/store';
+import { AuthReducer } from './login/reducer/auth-reducer';
 
 
 
 @NgModule({
-    declarations: [AppComponent, AddCourseComponent],
-    imports: [BrowserModule, BrowserAnimationsModule, SharedModule, HomeModule, LoginModule,
-        RoutingModule, RouterModule, HttpClientModule],
+    declarations: [
+        AppComponent,
+        AddCourseComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        HomeModule,
+        LoginModule,
+        RoutingModule,
+        RouterModule,
+        HttpClientModule,
+        StoreModule.forRoot({ auth: AuthReducer })
+    ],
     exports: [],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     bootstrap: [AppComponent]

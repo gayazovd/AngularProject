@@ -1,7 +1,7 @@
 <li class="courses-list-item" [appChangeBorderColor]='course'>
     <div (click)=" addFavorites()" class='fav' [class.selected]="course.isTopRated">★</div>
     <div class="courses-list-item__info" id="title" class="courses-list-item__title">{{course.name | uppercase}}</div>
-    <div id="students" class="courses-list-item__students">{{course.authors | authorsPipe}}</div>
+    <div id="students" class="courses-list-item__students">{{course.authors}}</div>
     <div id="start-date" class="courses-list-item__data">{{course.date | datePipe}}</div>
     <div id="duration" class="courses-list-item__duration">{{course.length | durationPipe}}</div>
     <div id="action" class="courses-list-item__icon-wrapper">
