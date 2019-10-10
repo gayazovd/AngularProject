@@ -8,6 +8,10 @@ import { PopupService } from 'src/app/core/popup.service';
 import { fromEvent, pipe } from 'rxjs';
 import { switchMap, filter } from 'rxjs/operators';
 import { LoadingService } from 'src/app/core/loading.service';
+import { Store } from '@ngrx/store';
+import { StateForCoursesList } from 'src/app/login/reducer/auth-reducer';
+
+import { coursesList } from '../../login/actions/actions';
 
 @Component({
   selector: 'app-main',
@@ -22,9 +26,10 @@ export class MainComponent implements OnInit {
   public readonly pageSize: number = 3;
 
 
-  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private load: LoadingService) { }
+  constructor(private coursesService: CoursesDataService, private cd: ChangeDetectorRef, private load: LoadingService, private store: Store<{ coursesList: StateForCoursesList }>) { }
 
   ngOnInit() {
+
     this.loadData();
     this.searchingCourse();
   }
@@ -32,6 +37,7 @@ export class MainComponent implements OnInit {
   loadData() {
     this.coursesService.getList(this.count, this.pageSize).subscribe(([data]) => {
       this.count = this.count + this.pageSize;
+      this.store.dispatch(coursesList({ courses: data.body }))
       this.courses = this.courses.concat(data.body)
       if (this.count >= data.count) {
         this.isShow = false;

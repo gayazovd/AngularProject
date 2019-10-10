@@ -12,14 +12,14 @@ import { DeletePopupComponent } from 'src/app/shared/delete-popup/delete-popup.c
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesListComponent implements OnInit {
-    constructor(private popup: PopupService, private route: Router, /* public dialogRef: MatDialogRef<CoursesListComponent> */) {
+    constructor(private popup: PopupService, private route: Router) {
 
     }
     @Input() public listItem: AppCourses;
     @Input() public courseId: number;
     @Output() remove = new EventEmitter<void>()
 
-    ngOnInit() { console.log(this.listItem) }
+    ngOnInit() { }
 
     addLesson() {
         this.route.navigate(['/courses-page', this.courseId, 'new'])

@@ -1,7 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthorizationService } from 'src/app/core/authorization.service';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { debounceTime, switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { InfoAboutUser } from 'src/app/app.model';
+import { Observable } from 'rxjs';
+import { State } from 'src/app/login/reducer/auth-reducer';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +13,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public login: string
+  public userInfo: string;
 
-  constructor(private route: Router, private auth: AuthorizationService, private cd: ChangeDetectorRef) { }
+  constructor(private route: Router, private auth: AuthorizationService, private store: Store<{ auth: State }>) { }
 
   ngOnInit() {
     this.checkUserInfo();
-    this.auth.userData.subscribe(data => data ? this.login = `${data.name.first} ${data.name.last} ` : this.login = '');
+    this.store.subscribe(state => {
+      if (state.auth && state.auth.userInfo) {
+        this.userInfo = `${state.auth.userInfo.name.first} ${state.auth.userInfo.name.last} `
+      }
+    })
   }
 
   checkUserInfo() {
@@ -26,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.auth.logout();
+    this.userInfo = null;
     this.route.navigate(['/login']);
   }
 

@@ -16,6 +16,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { DateFormatValidatorDirective } from './date-format-validator.directive';
+import { AuthorsPipe } from './authors-pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DateFormatValidatorDirective } from './date-format-validator.directive'
     CourseFormComponent,
     LoadingSpinnerComponent,
     DatePickerComponent,
-    DateFormatValidatorDirective
+    DateFormatValidatorDirective,
+    AuthorsPipe
   ],
   entryComponents: [
     DeletePopupComponent
@@ -59,7 +61,8 @@ import { DateFormatValidatorDirective } from './date-format-validator.directive'
     MatButtonModule,
     LoadingSpinnerComponent,
     NgSelectModule,
-    DatePickerComponent
+    DatePickerComponent,
+    AuthorsPipe
   ]
 })
 export class SharedModule { }

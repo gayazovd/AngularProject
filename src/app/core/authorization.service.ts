@@ -32,11 +32,11 @@ export class AuthorizationService {
 
   logout() {
     localStorage.removeItem('token');
-    this._userData.next(null);
+    this.store.dispatch({ type: AuthActionTypes.GetUserInfo, payload: null })
   }
 
   getUserInfo() {
-    return this.http.getUserInfo().pipe(tap(user => this._userData.next(user)));
+    return this.http.getUserInfo().pipe(tap(user => this.store.dispatch({ type: AuthActionTypes.GetUserInfo, payload: user })/* this._userData.next(user) */));
   }
 
 
